@@ -1,0 +1,249 @@
+% vim: ft=tex fdm=marker et sts=2 sw=2 cole=0
+%
+% vitae.tex -- a minimalistic LaTeX template for resumes
+%
+% These days most people read resumes on their computers.  Therefore,
+% using sans-serif fonts makes more sense.  Apart from this, the design
+% should be kept as minimalistic as possible, should not use LaTeX
+% packages that are not part of the standard TeXLive distribution, and
+% one should be able to distribute the entire resume as a single LaTeX
+% file.
+%
+%                                 ***
+%
+% Written and modified between 2014 and 2020 by Manu Mannattil
+%
+% Usage, modification, and distribution of this document, for any
+% purpose, with or without attribution, is permitted provided the
+% author's personal/professional details are removed.
+%
+
+% Preamble {{{1
+% -------------
+
+\documentclass[10pt]{article}
+
+\newcommand{\fname}{Manu Mannattil}             % Set your full name here.
+\newcommand{\iname}{M.~Mannattil}               % Set your intials + last name here.
+\newcommand{\bname}{\underline{Manu Mannattil}} % Set your name as you'd like it to appear in bibliographies.
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{ragged2e}
+
+% Required to break up tables across multiple pages.
+\usepackage{longtable}
+\setlength\LTleft{0pt}  % flush left
+\setlength\LTpre{0pt}   % space before table
+
+\usepackage[
+  top=1.1in,
+  bottom=0.85in,
+  left=1.2in,
+  right=1.2in,
+  headsep=0.25in,
+% showframe
+]{geometry}
+
+\usepackage[x11names]{xcolor}
+\usepackage[
+  allcolors=Blue4,
+  colorlinks=true,
+  pdftex,
+  pdfauthor={\fname},
+  pdftitle={Curriculum Vitae: \fname},
+  pdfsubject={Curriculum Vitae},
+  pdfkeywords={curriculum vitae, resume, vitae}
+]{hyperref}
+\urlstyle{same}
+
+% Custom commands.
+\providecommand{\email}[1]{\href{mailto:#1}{#1}}
+\providecommand{\doi}[2]{\href{https://dx.doi.org/#1}{#2}}
+
+% Beautiful Helvetica throughout.
+\usepackage[scale=0.92]{tgheros}
+\usepackage{tgtermes}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{sansmath}
+\sansmath
+
+% Customize page headers/footers.
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\iname}
+\lhead{\it{Curriculum Vit\ae}}
+\renewcommand{\headrulewidth}{0.75pt}
+\fancyfoot[C]{\thepage}
+\thispagestyle{plain}
+
+% Section heading formatting.
+\usepackage{titlesec}
+\titleformat{\section}{\bfseries}{\thesection. }{0pt}{\MakeUppercase}
+\titlespacing*{\section}{0pt}{10pt}{10pt}
+\titleformat{\subsection}{\bfseries}{\thesubsubsection. }{0pt}{}
+\titlespacing*{\subsection}{0pt}{8pt}{8pt}
+
+% For getting Git commit info.
+\usepackage{gitinfo2}
+
+% For setting spacing in lists.
+\usepackage{enumitem}
+
+\setlength\parindent{0em}
+\widowpenalty10000
+\clubpenalty10000
+
+\begin{document}
+
+% Name and Contact Details {{{1
+% -----------------------------
+
+{\bfseries\large\fname}
+\medskip
+
+\begin{minipage}[t]{0.45\textwidth}
+  Department of Physics\\
+  Syracuse University\\
+  Syracuse, NY 13244
+\end{minipage}
+%
+\begin{minipage}[t]{0.45\textwidth}
+  Phone: (+1)~315-515-7373\\
+  Email: \email{mmannatt@syr.edu}
+\end{minipage}\\
+
+% Personal Information {{{1
+% -------------------------
+
+\section*{Personal Information}
+
+Born on August 13, 1991 in Palakkad, Kerala; Indian citizen.
+
+% Education {{{1
+% --------------
+
+\section*{Education}
+
+\begin{tabular}{@{}ll}
+  \emph{Aug.~2017 -- present}   & Syracuse University, New York, USA: Ph.D. in Physics\\
+%                               & GPA: 3.956/4.000; Adviser: \href{https://thecollege.syr.edu/people/faculty/christian-d-santangelo}{Chris Santangelo}\\
+  \emph{Jul.~2009 -- Jul. 2014} & Indian Institute of Technology Kanpur, Uttar Pradesh, India: Int.~M.Sc.~in Physics\\
+%                               & GPA: 6.00/10.0; Adviser: \href{https://home.iitk.ac.in/~sagarc}{Sagar Chakraborty}\\
+% \emph{Jun.~2007 -- Mar. 2009} & Bhavan's Vidya Mandir, Poochatty, Thrissur, Kerala: Indian Senior School Certificate\\
+%                               & Percentage: 88.4\%\\
+% \emph{May.~2005 -- Mar. 2007} & Hari Sri Vidya Nidhi School, Thrissur, Kerala: Indian Certificate of Seconday Education\\
+%                               & Percentage: 93.4\%
+\end{tabular}
+
+% Employment History {{{1
+% -----------------------
+
+\section*{Employment History}
+
+\begin{tabular}{@{}ll}
+  \emph{Aug.~2019 -- present}   & Research Assistant, Department of Physics, Syracuse University, USA\\
+  \emph{Aug.~2017 -- present}   & Teaching Assistant, Department of Physics, Syracuse University, USA\\
+  \emph{Sep.~2014 -- Oct. 2015} & Project Associate, Nonlinear Dynamical Systems Group,\\
+                                & Indian Institute of Technology Kanpur, India
+\end{tabular}
+
+% Publications {{{1
+% -----------------
+
+\section*{Publications}
+
+% \subsection*{Refereed Journal Papers}
+
+\begin{enumerate}[itemsep=0pt,leftmargin=20pt]
+  \item[4.] \bname, Ambrish Pandey, Mahendra K.~Verma, and Sagar Chakraborty, ``On the applicability of low-dimensional models for convective flow reversals at extreme Prandtl numbers,'' \doi{10.1140/epjb/e2017-80391-1}{Eur.~Phys.~J.~B~\textbf{90}, 259~(2017)}.
+  \item[3.] \bname, Himanshu Gupta, and Sagar Chakraborty, ``Revisiting Evidence of Chaos in X-ray Light Curves: The Case of GRS~1915+105,'' \doi{10.3847/1538-4357/833/2/208}{Astrophys.~J.~\textbf{833}, 208~(2016)}.
+  \item[2.] Aditya Tandon, Malte Schr\"{o}der, \bname, Marc Timme, and Sagar Chakraborty, ``Synchronizing noisy nonidentical oscillators by transient uncoupling,'' \doi{10.1063/1.4959141}{Chaos \textbf{26}, 094817~(2016)}.
+  \item[1.] Malte Schr\"{o}der, \bname, Debabrata Dutta, Sagar Chakraborty, and Marc Timme, ``Transient Uncoupling Induces Synchronization,'' \doi{10.1103/PhysRevLett.115.054101}{Phys.~Rev.~Lett.~\textbf{115}, 054101~(2015)}.
+\end{enumerate}
+
+% \subsection*{Scientific Software}
+
+% \begin{enumerate}[itemsep=0pt,leftmargin=20pt]
+%   \item[1.] \bname, ``NoLiTSA: A Python module for nonlinear time series analysis'' (2015--2017)\\
+%     Source: \url{https://github.com/manu-mannattil/nolitsa}
+% \end{enumerate}
+
+% \subsection*{Submissions and Works in Progress}
+
+% Awards and Honors {{{1
+% ----------------------
+
+\section*{Awards and Honors}
+
+\begin{tabular}{@{}ll}
+  \emph{Apr.~2018} & Fellowship from the Henry Levinstein fund, Department of Physics, Syracuse University\\
+  \emph{Mar.~2011} & Kishore Vaigyanik Protsahan Yojana, Department of Science and Technology, Government of India
+\end{tabular}
+
+% Teaching {{{1
+% -------------
+
+\section*{Teaching Experience}
+
+\subsection*{Syracuse University}
+
+\begin{longtable}{@{}rl}
+  \emph{Spring 2020} & Teaching Assistant, PHY 212: General Physics II (Electricity \& Magnetism)\\
+  \emph{Fall 2019}   & Teaching Assistant, AST 101: Our Corner of the Universe\\
+  \emph{Summer 2019} & Course Instructor, PHY 212: General Physics II (Electricity \& Magnetism)\\
+  \emph{Spring 2019} & Teaching Assistant, PHY 222: General Physics II Lab (Electricity \& Magnetism)\\
+  \emph{Fall 2018}   & Teaching Assistant, PHY 211: General Physics I (Mechanics)\\
+  \emph{Fall 2018}   & Teaching Assistant, PHY 215: General Physics I for Majors (Mechanics)\\
+  \emph{Summer 2018} & Teaching Assistant, AST 101: Our Corner in the Universe\\
+  \emph{Spring 2018} & Teaching Assistant, PHY 212: General Physics II (Electricity \& Magnetism)\\
+  \emph{Fall 2017}   & Teaching Assistant, AST 101: Our Corner in the Universe
+\end{longtable}
+
+% Service {{{1
+% ------------
+
+\section*{Service to Profession}
+
+Manuscript reviewer for \emph{Physics of Fluids}.
+
+% Talks {{{1
+% ----------
+
+\section*{Talks}
+
+\begin{tabular}{@{}ll}
+  \emph{Aug.~2015} & ``Introduction to Nonlinear Time Series Analysis'' at Modeling and Simulation Lab,\\ & Indian Institute of Technology Kanpur, Uttar Pradesh, India
+\end{tabular}
+
+% % Schools and Workshops Attended {{{1
+% % -----------------------------------
+
+% \section*{Schools and Workshops Attended}
+
+% \begin{tabular}{@{}ll}
+%   \emph{Aug.~2011} & 5th Asian Science Camp: KAIST, Daejeon, South Korea\\
+%   \emph{Jun.~2010} & National Initiative for Undergraduate Science: Homi Bhabha Centre for Science Education, India
+% \end{tabular}
+
+% Miscellaneous {{{1
+% ------------------
+
+\section*{Miscellaneous}
+
+\begin{tabular}{@{}p{1in}p{5in}}
+  \emph{Languages}   & English (fluent), Hindi (basic), and Malayalam (native)\\
+  \emph{Programming} & Extensive experience in various programming languages including Python, C, Vim script, AWK, and various shells (Bash, POSIX sh, etc.)
+\end{tabular}
+
+% Revision Information {{{1
+% -------------------------
+
+\bigskip
+\begin{center}
+  \hypersetup{hidelinks}\color{gray}
+  Git commit \href{https://github.com/manu-mannattil/vitae/tree/\gitHash}{\texttt{\gitAbbrevHash}}; \gitAuthorIsoDate
+\end{center}
+
+\end{document}
