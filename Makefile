@@ -15,7 +15,5 @@ clean:
 	rm -f .git/gitHeadInfo.gin
 	rm -f tags
 
-distclean:
+distclean: clean
 	latexmk -C
-	rm -f .git/gitHeadInfo.gin
-	rm -f tags
