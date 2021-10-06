@@ -3,17 +3,27 @@
 all: gitinfo vitae.pdf
 
 %.pdf: %.tex
-	latexmk -norc -pdf -dvi- -ps- $<
+	pdflatex $<
 	command -v pdfsizeopt && pdfsizeopt $@ $@; true
 
 gitinfo:
-	git --no-pager log -1 --date=short --decorate=short \
-		--pretty=format:"\usepackage[shash={%h}, lhash={%H}, authname={%an}, authemail={%ae}, authsdate={%ad}, authidate={%ai}, authudate={%at}, commname={%cn}, commemail={%ce}, commsdate={%cd}, commidate={%ci}, commudate={%ct}, refnames={%d}, firsttagdescribe={$FIRSTTAG}, reltag={$RELTAG} ]{gitexinfo}" HEAD >.git/gitHeadInfo.gin
+	git --no-pager log -1 --date=short --decorate=short --pretty=format:"\
+		\def\gitHash{%H}              \
+		\def\gitShortHash{%h}         \
+		\def\gitRefName{%D}           \
+		\def\gitAuthorName{%an}       \
+		\def\gitAuthorEmail{%ae}      \
+		\def\gitAuthorDate{%ai}       \
+		\def\gitAuthorAltDate{%aD}    \
+		\def\gitCommitterName{%cn}    \
+		\def\gitCommitterEmail{%ce}   \
+		\def\gitCommitterDate{%ci}    \
+		\def\gitCommitterAltDate{%cD} \
+	" HEAD >.git/gitInfo.in
 
 clean:
-	latexmk -c
 	rm -f .git/gitHeadInfo.gin
-	rm -f tags
+	rm -f *.aux *.log *.out
 
 distclean: clean
-	latexmk -C
+	rm vitae.pdf

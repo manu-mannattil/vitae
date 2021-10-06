@@ -85,15 +85,29 @@
 \titleformat{\subsection}{\bfseries}{\thesubsubsection. }{0pt}{}
 \titlespacing*{\subsection}{0pt}{8pt}{8pt}
 
-% For getting Git commit info.
-\usepackage{gitinfo2}
-
 % For setting spacing in lists.
 \usepackage{enumitem}
 
 \setlength\parindent{0em}
 \widowpenalty10000
 \clubpenalty10000
+
+% Git commit info.
+\ifdefined\gitInfo\else\def\gitInfo{.git/gitInfo.in}\fi
+\IfFileExists{\gitInfo}{\input{\gitInfo}}{
+  \def\gitError{$\heartsuit\heartsuit\heartsuit$}
+  \def\gitHash{\gitError}
+  \def\gitShortHash{\gitError}
+  \def\gitRefName{\gitError}
+  \def\gitAuthorName{\gitError}
+  \def\gitAuthorEmail{\gitError}
+  \def\gitAuthorDate{\gitError}
+  \def\gitAuthorAltDate{\gitError}
+  \def\gitCommitterName{\gitError}
+  \def\gitCommitterEmail{\gitError}
+  \def\gitCommitterDate{\gitError}
+  \def\gitCommitterAltDate{\gitError}
+}
 
 \begin{document}
 
@@ -246,9 +260,10 @@ Instructor for PHY 212 (Electricity \& Magnetism); Teaching Assistant for PHY 21
 % -------------------------
 
 \bigskip
+
 \begin{center}
   \hypersetup{hidelinks}\color{gray}
-  Git commit \href{https://github.com/manu-mannattil/vitae/tree/\gitHash}{\texttt{\gitAbbrevHash}}; \gitAuthorIsoDate
+  Git commit \href{https://github.com/manu-mannattil/vitae/tree/\gitHash}{\texttt{\gitShortHash}}; \gitCommitterDate
 \end{center}
 
 \end{document}
