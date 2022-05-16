@@ -1,8 +1,10 @@
 # vitæ
 
+[![PDF](https://shields.io/badge/PDF-master-informational)](https://raw.githubusercontent.com/manu-mannattil/assets/master/vitae/vitae.pdf)
+
 My curriculum vitæ.  To generate a PDF version, run `make` or compile
 using pdflatex.  Using make would automatically generate the
-`gitInfo.in` file required to include the Git commit info in the
+`gitInfo.in` file required to include the Git commit information in the
 generated PDF.
 
 ## License

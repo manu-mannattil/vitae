@@ -2,40 +2,35 @@
 %
 % vitae.tex -- a minimalistic LaTeX template for resumes
 %
-% These days most people read resumes on their computers.  Therefore,
-% using sans-serif fonts makes more sense.  Apart from this, the design
-% should be kept as minimalistic as possible, should not use LaTeX
-% packages that are not part of the standard TeXLive distribution, and
-% one should be able to distribute the entire resume as a single LaTeX
-% file.
+% The design is intentionally minimalistic and I don't use
+% LaTeX packages that are not part of the standard TeXLive
+% distribution, and one should be able to distribute the
+% entire resume as a single LaTeX file.  The styling and
+% layout was partially inspired by Donald Knuth's CV [1].
 %
-%                                 ***
+% Copyright (c) 2015-2016, Manu Mannattil.  All rights reserved.
 %
-% Written and modified between 2014 and 2021 by Manu Mannattil
+% Usage, modification, and distribution of this document,
+% for any purpose, with or without attribution, is permitted
+% provided the author's personal/professional details are
+% removed.
 %
-% Usage, modification, and distribution of this document, for any
-% purpose, with or without attribution, is permitted provided the
-% author's personal/professional details are removed.
+% [1] https://www-cs-faculty.stanford.edu/~knuth/vita.pdf
 %
 
 % Preamble {{{1
 % -------------
 
-\documentclass[10pt]{article}
+\documentclass[10pt,article,oneside]{memoir}
 
-\newcommand{\fname}{Manu Mannattil}             % Set your full name here.
-\newcommand{\iname}{M.~Mannattil}               % Set your intials + last name here.
-\newcommand{\bname}{\underline{Manu Mannattil}} % Set your name as you'd like it to appear in bibliographies.
+\def\fname{Manu Mannattil}              % Set your full name here.
+\def\iname{M.~Mannattil}                % Set your intials + last name here.
+\usepackage[normalem]{ulem}
+\def\bname{\dotuline{Manu Mannattil}}   % Set your name as you'd like it to appear in bibliographies.
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
-\usepackage{ragged2e}
-
-% Required to break up tables across multiple pages.
-\usepackage{longtable}
-\setlength\LTleft{0pt}  % flush left
-\setlength\LTpre{0pt}   % space before table
 
 \usepackage[
   top=1.1in,
@@ -46,9 +41,12 @@
 % showframe
 ]{geometry}
 
-\usepackage[x11names]{xcolor}
+\usepackage{color}
+\definecolor{bluesmoke}{rgb}{0.2,0.4,0.6}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+
 \usepackage[
-  allcolors=Blue4,
+  allcolors=bluesmoke,
   colorlinks=true,
   pdftex,
   pdfauthor={\fname},
@@ -59,38 +57,45 @@
 \urlstyle{same}
 
 % Custom commands.
-\providecommand{\email}[1]{\href{mailto:#1}{#1}}
-\providecommand{\doi}[2]{\href{https://dx.doi.org/#1}{#2}}
+\def\email#1{\href{mailto:#1}{#1}}
+\def\doi#1#2{\href{https://dx.doi.org/#1}{#2}}
+\def\arxiv#1#2{\href{https://arxiv.org/abs/#1}{arXiv:#1 [#2]}}
 
-% Beautiful Helvetica throughout.
-\usepackage[scale=0.92]{tgheros}
-\usepackage{tgtermes}
-\renewcommand{\familydefault}{\sfdefault}
-\usepackage{sansmath}
-\sansmath
+\usepackage[widespace]{fourier}
+\usepackage[scale=0.88,sb]{inter}
 
-% Customize page headers/footers.
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\rhead{\iname}
-\lhead{\it{Curriculum Vit\ae}}
-\renewcommand{\headrulewidth}{0.75pt}
-\fancyfoot[C]{\thepage}
-\thispagestyle{plain}
+% Section styling.
+\setsecheadstyle{\bfseries\sffamily}
+\setbeforesecskip{\baselineskip}
+\setaftersecskip{0.5\baselineskip}
+\setsubsecheadstyle{\itshape\sffamily}
+\setbeforesubsecskip{0.5\baselineskip}
+\setaftersubsecskip{0.5\baselineskip}
+\setcounter{secnumdepth}{0}
 
-% Section heading formatting.
-\usepackage{titlesec}
-\titleformat{\section}{\bfseries}{\thesection. }{0pt}{\MakeUppercase}
-\titlespacing*{\section}{0pt}{10pt}{10pt}
-\titleformat{\subsection}{\bfseries}{\thesubsubsection. }{0pt}{}
-\titlespacing*{\subsection}{0pt}{8pt}{8pt}
+% From Section 3.5 of memoir's documentation.
+\clubpenalty=9996
+\widowpenalty=9999
+\brokenpenalty=4991
+\predisplaypenalty=10000
+\postdisplaypenalty=1549
+\displaywidowpenalty=1602
 
-% For setting spacing in lists.
-\usepackage{enumitem}
+% Hanging paragraphs throughout.
+\def\hangpars{%
+  \leftskip=1.75em%
+  \parindent=-\leftskip%
+  \setsecindent{-\leftskip}%
+  \setsubsecindent{-\leftskip}%
+}
 
-\setlength\parindent{0em}
-\widowpenalty10000
-\clubpenalty10000
+% Reset hanging paragraphs.
+\def\nohangpars{%
+  \leftskip=0pt%
+  \parindent=0pt%
+  \setsecindent{0pt}%
+  \setsubsecindent{0pt}%
+}
 
 % Git commit info.
 \ifdefined\gitInfo\else\def\gitInfo{.git/gitInfo.in}\fi
@@ -114,7 +119,12 @@
 % Name and Contact Details {{{1
 % -----------------------------
 
-{\bfseries\large\fname}
+\hangpars
+
+{\sffamily\Large CURRICULUM VIT\AE}
+\vskip2.25em
+
+{\bfseries\sffamily\large\fname}
 \medskip
 
 \begin{minipage}[t]{0.45\textwidth}
@@ -126,135 +136,108 @@
 \begin{minipage}[t]{0.45\textwidth}
   Phone: (+1)~315-515-7373\\
   Email: \email{manu.mannattil@posteo.net}
-\end{minipage}\\
+\end{minipage}
 
 % Personal Information {{{1
 % -------------------------
 
-\section*{Personal Information}
+\section{Personal Information}
 
 Born on August 13, 1991 in Palakkad, Kerala; Indian citizen.
 
 % Education {{{1
 % --------------
 
-\section*{Education}
+\section{Education}
 
-\begin{tabular}{@{}ll}
-  \emph{Aug.~2017 -- present}   & Syracuse University, New York, USA: Ph.D. in Physics\\
-%                               & GPA: 3.958/4.000; Adviser: \href{http://cdsantan.expressions.syr.edu}{Chris Santangelo}\\
-  \emph{Jul.~2009 -- Jul. 2014} & Indian Institute of Technology Kanpur, Uttar Pradesh, India: Int.~M.Sc.~in Physics\\
-%                               & GPA: 6.00/10.0; Adviser: \href{https://home.iitk.ac.in/~sagarc}{Sagar Chakraborty}\\
-% \emph{Jun.~2007 -- Mar. 2009} & Bhavan's Vidya Mandir, Poochatty, Thrissur, Kerala: Indian Senior School Certificate\\
-%                               & Percentage: 88.4\%\\
-% \emph{May 2005 -- Mar. 2007}  & Hari Sri Vidya Nidhi School, Thrissur, Kerala: Indian Certificate of Seconday Education\\
-%                               & Percentage: 93.4\%
-\end{tabular}
+Syracuse University, Syracuse, New York, USA; August~2017--.\\
+Ph.D. in Physics, August 2023 (expected).
+
+Indian Institute of Technology Kanpur, Kanpur, Uttar Pradesh, India; July~2009--July~2014.\\
+Integrated~M.Sc. in Physics, February~2015.
 
 % Employment History {{{1
 % -----------------------
 
-\section*{Employment History}
+\section{Employment History}
 
-\begin{tabular}{@{}ll}
-  \emph{May 2020 -- present}     & Research Assistant, Department of Physics, Syracuse University, USA\\
-  \emph{Aug.~2017 -- May 2020}   & Teaching Assistant, Department of Physics, Syracuse University, USA\\
-  \emph{Sep.~2014 -- Oct. 2015}  & Project Associate, Nonlinear Dynamical Systems Group,\\
-                                 & Indian Institute of Technology Kanpur, India
-\end{tabular}
+Research and/or Teaching Assistant, Department of Physics, Syracuse University; August~2020--.
+
+Project Associate, Nonlinear Dynamical Systems Group, Indian Institute of Technology Kanpur; September 2014--October 2015.
 
 % Publications {{{1
 % -----------------
 
-\section*{Publications}
+\section{Publications}
 
-% \subsection*{Refereed Journal Papers}
+% \subsection{Refereed Journal Papers}
 
-\begin{enumerate}[itemsep=0pt,leftmargin=20pt]
-  \item[4.] \bname, Ambrish Pandey, Mahendra K.~Verma, and Sagar Chakraborty, ``On the applicability of low-dimensional models for convective flow reversals at extreme Prandtl numbers,'' \doi{10.1140/epjb/e2017-80391-1}{Eur.~Phys.~J.~B~\textbf{90}, 259~(2017)}.
-  \item[3.] \bname, Himanshu Gupta, and Sagar Chakraborty, ``Revisiting Evidence of Chaos in X-ray Light Curves: The Case of GRS~1915+105,'' \doi{10.3847/1538-4357/833/2/208}{Astrophys.~J.~\textbf{833}, 208~(2016)}.
-  \item[2.] Aditya Tandon, Malte Schr\"{o}der, \bname, Marc Timme, and Sagar Chakraborty, ``Synchronizing noisy nonidentical oscillators by transient uncoupling,'' \doi{10.1063/1.4959141}{Chaos \textbf{26}, 094817~(2016)}.
-  \item[1.] Malte Schr\"{o}der, \bname, Debabrata Dutta, Sagar Chakraborty, and Marc Timme, ``Transient Uncoupling Induces Synchronization,'' \doi{10.1103/PhysRevLett.115.054101}{Phys.~Rev.~Lett.~\textbf{115}, 054101~(2015)}.
-\end{enumerate}
+\begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
+  \setlength{\itemsep}{-0.25em}
+  \item[5.] \bname, J.~M.~Schwarz, and Christian D.~Santangelo, ``Thermal Fluctuations of Singular Bar-Joint Mechanisms,'' \doi{10.1103/PhysRevLett.128.208005}{Phys.~Rev.~Lett.~\textbf{128}, 208005 (2022)}, \arxiv{2112.04279}{cond-mat.soft}.
+  \item[4.] \bname, Ambrish Pandey, Mahendra K.~Verma, and Sagar Chakraborty, ``On the applicability of low-dimensional models for convective flow reversals at extreme Prandtl numbers,'' \doi{10.1140/epjb/e2017-80391-1}{Eur.~Phys.~J.~B~\textbf{90}, 259~(2017)}, \arxiv{1711.01510}{physics.flu-dyn}.
+  \item[3.] \bname, Himanshu Gupta, and Sagar Chakraborty, ``Revisiting Evidence of Chaos in X-ray Light Curves: The Case of GRS~1915+105,'' \doi{10.3847/1538-4357/833/2/208}{Astrophys.~J.~\textbf{833}, 208~(2016)}, \arxiv{1611.02264}{astro-ph.HE}.
+  \item[2.] Aditya Tandon, Malte Schr\"{o}der, \bname, Marc Timme, and Sagar Chakraborty, ``Synchronizing noisy nonidentical oscillators by transient uncoupling,'' \doi{10.1063/1.4959141}{Chaos \textbf{26}, 094817~(2016)}, \arxiv{1611.02298}{nlin.CD}.
+  \item[1.] Malte Schr\"{o}der, \bname, Debabrata Dutta, Sagar Chakraborty, and Marc Timme, ``Transient Uncoupling Induces Synchronization,'' \doi{10.1103/PhysRevLett.115.054101}{Phys.~Rev.~Lett.~\textbf{115}, 054101~(2015)}, \arxiv{1508.06545}{nlin.CD}.
+\end{flexlabelled}
 
-% \subsection*{Scientific Software}
+% \subsection{Scientific Software}
 
-% \begin{enumerate}[itemsep=0pt,leftmargin=20pt]
-%   \item[1.] \bname, ``NoLiTSA: A Python module for nonlinear time series analysis'' (2015--2017)\\
-%     Source: \url{https://github.com/manu-mannattil/nolitsa}
-% \end{enumerate}
+% \begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
+%   \setlength{\itemsep}{-0.25em}
+% \item[1.] \bname, \href{https://github.com/manu-mannattil/NoLiTSA}{NoLiTSA: A Python module for nonlinear time series analysis}, 2015--2017.
+% \end{flexlabelled}
 
-% \subsection*{Submissions and Works in Progress}
+% \subsection{Submissions and Works in Progress}
 
 % Awards and Honors {{{1
 % ----------------------
 
-\section*{Awards and Honors}
+\section{Awards and Honors}
 
-\begin{tabular}{@{}ll}
-  \emph{May 2020}  & College of Arts \& Sciences Award, Syracuse University\\
-  \emph{Apr.~2018} & Fellowship from the Henry Levinstein fund, Department of Physics, Syracuse University\\
-  \emph{Mar.~2011} & Kishore Vaigyanik Protsahan Yojana, Department of Science and Technology, Government of India
-\end{tabular}
+College of Arts \& Sciences Award, Syracuse University, May 2020.
+
+Fellowship from the Henry Levinstein fund, Department of Physics, Syracuse University, April 2018.
+
+Kishore Vaigyanik Protsahan Yojana, Department of Science and Technology, Government of India, March 2011.
 
 % Talks {{{1
 % ----------
 
-\section*{Talks}
+\section{Talks and Posters}
 
-\begin{tabular}{@{}ll}
-  \emph{Mar.~2021} & ``Thermal Fluctuations of Singular Mechanical Networks'' at APS Virtual March Meeting 2021\\
-  \emph{Aug.~2015} & ``Introduction to Nonlinear Time Series Analysis'' at Modelling and Simulation Lab,\\ & Indian Institute of Technology Kanpur, Uttar Pradesh, India
-\end{tabular}
+Thermal Fluctuations of Singular Bar-Joint Mechanisms: APS March Meetings '21 and '22; Simons Center for Geometry and Physics, Stony Brook University, May 2022.
+
+Introduction to Nonlinear Time Series Analysis: Modelling and Simulation Lab, Indian Institute of Technology Kanpur, August 2015.
 
 % Service {{{1
 % ------------
 
-\section*{Service to Profession}
+\nohangpars
+
+\section{Service to Profession}
 
 Manuscript reviewer for \emph{Physics of Fluids}.
 
 % Teaching {{{1
 % -------------
 
-\section*{Teaching Experience}
+\section{Teaching Experience}
 
-\subsection*{Syracuse University}
+\subsection{Syracuse University}
 
-Instructor for PHY 212 (Electricity \& Magnetism); Teaching Assistant for PHY 215 (Honors Mechanics), PHY 211 (General Mechanics), PHY 222 (Electricity \& Magnetism Lab), and AST 101 (Introductory Astronomy).
-
-% \begin{longtable}{@{}rl}
-%   \emph{Spring 2020} & Teaching Assistant, PHY 212: General Physics II (Electricity \& Magnetism)\\
-%   \emph{Fall 2019}   & Teaching Assistant, AST 101: Our Corner of the Universe\\
-%   \emph{Summer 2019} & Course Instructor, PHY 212: General Physics II (Electricity \& Magnetism)\\
-%   \emph{Spring 2019} & Teaching Assistant, PHY 222: General Physics II Lab (Electricity \& Magnetism)\\
-%   \emph{Fall 2018}   & Teaching Assistant, PHY 211: General Physics I (Mechanics)\\
-%   \emph{Fall 2018}   & Teaching Assistant, PHY 215: General Physics I for Majors (Mechanics)\\
-%   \emph{Summer 2018} & Teaching Assistant, AST 101: Our Corner in the Universe\\
-%   \emph{Spring 2018} & Teaching Assistant, PHY 212: General Physics II (Electricity \& Magnetism)\\
-%   \emph{Fall 2017}   & Teaching Assistant, AST 101: Our Corner in the Universe
-% \end{longtable}
-
-
-% % Schools and Workshops Attended {{{1
-% % -----------------------------------
-
-% \section*{Schools and Workshops Attended}
-
-% \begin{tabular}{@{}ll}
-%   \emph{Aug.~2011} & 5th Asian Science Camp: KAIST, Daejeon, South Korea\\
-%   \emph{Jun.~2010} & National Initiative for Undergraduate Science: Homi Bhabha Centre for Science Education, India
-% \end{tabular}
+Instructor for PHY 212 (Electricity \& Magnetism); Grader for PHY 731 (Graduate Statistical Mechanics); Teaching Assistant for PHY 215 (Honors Mechanics), PHY 211 (General Mechanics), PHY 222 (Electricity \& Magnetism Lab), and AST 101 (Introductory Astronomy).
 
 % Miscellaneous {{{1
 % ------------------
 
-\section*{Miscellaneous}
+\section{Miscellaneous}
 
-\begin{tabular}{@{}p{1in}p{5in}}
-  \emph{Languages}   & English (fluent), Hindi (basic), and Malayalam (native)\\
-  \emph{Programming} & Extensive experience writing modular software following the ``one-thing-well'' philosophy in various programming languages including Python, C, Vim script, AWK, and various shells (Bash, POSIX sh, etc.)
-\end{tabular}
+\hangpars
+
+\emph{Languages.---} English (fluent), Hindi (basic), and Malayalam (native).
+
+\emph{Computer skills.---} Experience writing well-documented and modular software in Python, C++, Wolfram Language, Vim script, AWK, and various shells (Bash, POSIX sh, etc.); some experience with C, JavaScript, Perl, etc.; seasoned user of Unix-like operating systems and related software.
 
 % Revision Information {{{1
 % -------------------------
@@ -262,7 +245,7 @@ Instructor for PHY 212 (Electricity \& Magnetism); Teaching Assistant for PHY 21
 \bigskip
 
 \begin{center}
-  \hypersetup{hidelinks}\color{gray}
+  \color{gray}
   Git commit \href{https://github.com/manu-mannattil/vitae/tree/\gitHash}{\texttt{\gitShortHash}}; \gitCommitterDate
 \end{center}
 
