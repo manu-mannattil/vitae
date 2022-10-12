@@ -8,7 +8,8 @@
 % entire resume as a single LaTeX file.  The styling and
 % layout was partially inspired by Donald Knuth's CV [1].
 %
-% Copyright (c) 2015-2016, Manu Mannattil.  All rights reserved.
+% Copyright (c) 2014-2022, Manu Mannattil.
+% All rights reserved.
 %
 % Usage, modification, and distribution of this document,
 % for any purpose, with or without attribution, is permitted
@@ -23,10 +24,9 @@
 
 \documentclass[10pt,article,oneside]{memoir}
 
-\def\fname{Manu Mannattil}              % Set your full name here.
-\def\iname{M.~Mannattil}                % Set your intials + last name here.
-\usepackage[normalem]{ulem}
-\def\bname{\dotuline{Manu Mannattil}}   % Set your name as you'd like it to appear in bibliographies.
+\def\fname{Manu Mannattil}                % Set your full name here.
+\def\iname{M.~Mannattil}                  % Set your intials + last name here.
+\def\bname{\underline{Manu Mannattil}}    % Set your name as you'd like it to appear in bibliographies.
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -42,11 +42,11 @@
 ]{geometry}
 
 \usepackage{color}
-\definecolor{bluesmoke}{rgb}{0.2,0.4,0.6}
+\definecolor{bs1}{rgb}{0.207843,0.415686,0.623529}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 
 \usepackage[
-  allcolors=bluesmoke,
+  allcolors=bs1,
   colorlinks=true,
   pdftex,
   pdfauthor={\fname},
@@ -125,17 +125,23 @@
 \vskip2.25em
 
 {\bfseries\sffamily\large\fname}
-\medskip
+\vskip1em
 
 \begin{minipage}[t]{0.45\textwidth}
+  \begin{tabular}{@{}l}
   Department of Physics\\
   Syracuse University\\
   Syracuse, NY 13244
+  \end{tabular}
 \end{minipage}
 %
-\begin{minipage}[t]{0.45\textwidth}
-  Phone: (+1)~315-515-7373\\
-  Email: \email{manu.mannattil@posteo.net}
+\begin{minipage}[b]{0.45\textwidth}
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular}{@{}rl@{}}
+    Phone: & (+1)~315-515-7373\\
+    Email: & \email{manu.mannattil@posteo.net}\\
+    Web: & \href{https://manu-mannattil.github.io}{manu-mannattil.github.io}
+  \end{tabular}
 \end{minipage}
 
 % Personal Information {{{1
@@ -151,7 +157,7 @@ Born on August 13, 1991 in Palakkad, Kerala; Indian citizen.
 \section{Education}
 
 Syracuse University, Syracuse, New York, USA; August~2017--.\\
-Ph.D. in Physics, August 2023 (expected).
+Ph.D. in Physics, August 2023 (expected); GPA: 3.958/4.000.
 
 Indian Institute of Technology Kanpur, Kanpur, Uttar Pradesh, India; July~2009--July~2014.\\
 Integrated~M.Sc. in Physics, February~2015.
@@ -161,7 +167,9 @@ Integrated~M.Sc. in Physics, February~2015.
 
 \section{Employment History}
 
-Research and/or Teaching Assistant, Department of Physics, Syracuse University; August~2020--.
+Research Assistant, Department of Physics, Syracuse University; May 2019--.
+
+Teaching Assistant, Department of Physics, Syracuse University; August~2017--May 2019.
 
 Project Associate, Nonlinear Dynamical Systems Group, Indian Institute of Technology Kanpur; September 2014--October 2015.
 
@@ -170,25 +178,31 @@ Project Associate, Nonlinear Dynamical Systems Group, Indian Institute of Techno
 
 \section{Publications}
 
-% \subsection{Refereed Journal Papers}
+\subsection{Works in progress}
 
 \begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
   \setlength{\itemsep}{-0.25em}
-  \item[5.] \bname, J.~M.~Schwarz, and Christian D.~Santangelo, ``Thermal Fluctuations of Singular Bar-Joint Mechanisms,'' \doi{10.1103/PhysRevLett.128.208005}{Phys.~Rev.~Lett.~\textbf{128}, 208005 (2022)}, \arxiv{2112.04279}{cond-mat.soft}.
-  \item[4.] \bname, Ambrish Pandey, Mahendra K.~Verma, and Sagar Chakraborty, ``On the applicability of low-dimensional models for convective flow reversals at extreme Prandtl numbers,'' \doi{10.1140/epjb/e2017-80391-1}{Eur.~Phys.~J.~B~\textbf{90}, 259~(2017)}, \arxiv{1711.01510}{physics.flu-dyn}.
-  \item[3.] \bname, Himanshu Gupta, and Sagar Chakraborty, ``Revisiting Evidence of Chaos in X-ray Light Curves: The Case of GRS~1915+105,'' \doi{10.3847/1538-4357/833/2/208}{Astrophys.~J.~\textbf{833}, 208~(2016)}, \arxiv{1611.02264}{astro-ph.HE}.
-  \item[2.] Aditya Tandon, Malte Schr\"{o}der, \bname, Marc Timme, and Sagar Chakraborty, ``Synchronizing noisy nonidentical oscillators by transient uncoupling,'' \doi{10.1063/1.4959141}{Chaos \textbf{26}, 094817~(2016)}, \arxiv{1611.02298}{nlin.CD}.
-  \item[1.] Malte Schr\"{o}der, \bname, Debabrata Dutta, Sagar Chakraborty, and Marc Timme, ``Transient Uncoupling Induces Synchronization,'' \doi{10.1103/PhysRevLett.115.054101}{Phys.~Rev.~Lett.~\textbf{115}, 054101~(2015)}, \arxiv{1508.06545}{nlin.CD}.
+  \item[2.] {\bname}, ``Energy and Free-Energy Landscapes of Soft Few-Body Systems With Singular Constraints'', forthcoming (early 2023).
+  \item[1.] {\bname} and Christian D.~Santangelo, ``Geometric Localization of Waves on Thin Elastic Structures'', forthcoming (early 2023).
 \end{flexlabelled}
 
-% \subsection{Scientific Software}
+\subsection{Refereed journal papers}
 
-% \begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
-%   \setlength{\itemsep}{-0.25em}
-% \item[1.] \bname, \href{https://github.com/manu-mannattil/NoLiTSA}{NoLiTSA: A Python module for nonlinear time series analysis}, 2015--2017.
-% \end{flexlabelled}
+\begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
+  \setlength{\itemsep}{-0.25em}
+  \item[5.] \bname, J.~M.~Schwarz, and Christian D.~Santangelo, ``Thermal Fluctuations of Singular Bar-Joint Mechanisms'', \doi{10.1103/PhysRevLett.128.208005}{Phys.~Rev.~Lett.~\textbf{128}, 208005 (2022)}, \arxiv{2112.04279}{cond-mat.soft}.
+  \item[4.] \bname, Ambrish Pandey, Mahendra K.~Verma, and Sagar Chakraborty, ``On the applicability of low-dimensional models for convective flow reversals at extreme Prandtl numbers'', \doi{10.1140/epjb/e2017-80391-1}{Eur.~Phys.~J.~B~\textbf{90}, 259~(2017)}, \arxiv{1711.01510}{physics.flu-dyn}.
+  \item[3.] \bname, Himanshu Gupta, and Sagar Chakraborty, ``Revisiting Evidence of Chaos in X-ray Light Curves: The Case of GRS~1915+105'', \doi{10.3847/1538-4357/833/2/208}{Astrophys.~J.~\textbf{833}, 208~(2016)}, \arxiv{1611.02264}{astro-ph.HE}.
+  \item[2.] Aditya Tandon, Malte Schr\"{o}der, \bname, Marc Timme, and Sagar Chakraborty, ``Synchronizing noisy nonidentical oscillators by transient uncoupling'', \doi{10.1063/1.4959141}{Chaos \textbf{26}, 094817~(2016)}, \arxiv{1611.02298}{nlin.CD}.
+  \item[1.] Malte Schr\"{o}der, \bname, Debabrata Dutta, Sagar Chakraborty, and Marc Timme, ``Transient Uncoupling Induces Synchronization'', \doi{10.1103/PhysRevLett.115.054101}{Phys.~Rev.~Lett.~\textbf{115}, 054101~(2015)}, \arxiv{1508.06545}{nlin.CD}.
+\end{flexlabelled}
 
-% \subsection{Submissions and Works in Progress}
+\subsection{Scientific software}
+
+\begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
+  \setlength{\itemsep}{-0.25em}
+  \item[1.] \href{https://github.com/manu-mannattil/NoLiTSA}{NoLiTSA} is a Python module for nonlinear time series analysis that I developed between 2015 and 2017.  It has now been used in over 15 scientific publications, and has over 100 stars on GitHub.
+\end{flexlabelled}
 
 % Awards and Honors {{{1
 % ----------------------
@@ -237,7 +251,7 @@ Instructor for PHY 212 (Electricity \& Magnetism); Grader for PHY 731 (Graduate 
 
 \emph{Languages.---} English (fluent), Hindi (basic), and Malayalam (native).
 
-\emph{Computer skills.---} Experience writing well-documented and modular software in Python, C++, Wolfram Language, Vim script, AWK, and various shells (Bash, POSIX sh, etc.); some experience with C, JavaScript, Perl, etc.; seasoned user of Unix-like operating systems and related software.
+\emph{Computer skills.---} Experience writing well-documented and modular software in Python, C++, Wolfram Language, Vim script, AWK, and various shells (Bash, POSIX sh, etc.); seasoned user of Unix-like operating systems and related software.
 
 % Revision Information {{{1
 % -------------------------
