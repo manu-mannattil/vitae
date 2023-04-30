@@ -4,7 +4,6 @@ all: gitinfo vitae.pdf
 
 %.pdf: %.tex
 	pdflatex $<
-	command -v pdfsizeopt && pdfsizeopt --do-optimize-images=no $@ $@; true
 
 gitinfo:
 	git --no-pager log -1 --date=short --decorate=short --pretty=format:"\
@@ -19,7 +18,7 @@ gitinfo:
 		\def\gitCommitterEmail{%ce}   \
 		\def\gitCommitterDate{%ci}    \
 		\def\gitCommitterAltDate{%cD} \
-	" HEAD >.git/gitInfo.in
+	" HEAD >gitInfo.in
 
 clean:
 	rm -f .git/gitHeadInfo.gin

@@ -1,0 +1,65 @@
+% NAME
+%
+%   fourierx.sty - Fourier-GUTenberg + Utopia + with some customizations
+%
+% DESCRIPTION
+%
+%   fourierx.sty is a package that provides the Fourier-GUTenberg
+%   + Utopia fonts with some customizations.  Caligraphic math fonts are
+%   borrowed from Latin Modern (with appropriate scaling) and
+%   Fourier-GUTenberg's calligraphic set is mapped to \mathscr.
+%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{fourierx}[2022/03/22 v0.1]
+
+% Ask beamer to leave fonts untouched.
+\@ifclassloaded{beamer}{\beamer@suppressreplacementstrue}
+
+\RequirePackage{amssymb}
+\RequirePackage[widespace]{fourier}
+
+% Use Fourier's caligraphic math for \mathscr.
+\DeclareMathAlphabet{\mathscr}{FMS}{futm}{m}{n}
+\SetMathAlphabet{\mathscr}{bold}{FMS}{futm}{b}{n}
+
+% Use Latin Modern calligraphic math for \mathcal after reducing
+% glyph size to 96%.  Adapted from omslmsy.fd.
+% See fntguide.pdf and https://tex.stackexchange.com/a/181240/132777
+% \DeclareFontFamily{OMS}{lmsy}{\skewchar\font48 }
+% \DeclareFontShape{OMS}{lmsy}{m}{n}{%
+%      <-5.5> s*[0.96] lmsy5     <5.5-6.5> s*[0.96] lmsy6
+%   <6.5-7.5> s*[0.96] lmsy7     <7.5-8.5> s*[0.96] lmsy8
+%   <8.5-9.5> s*[0.96] lmsy9     <9.5->    s*[0.96] lmsy10
+% }{}
+% \DeclareFontShape{OMS}{lmsy}{b}{n}{%
+%   <-6>  s*[0.96] lmbsy5
+%   <6-8> s*[0.96] lmbsy7
+%   <8->  s*[0.96] lmbsy10
+% }{}
+\DeclareMathAlphabet{\mathcal}{OMS}{lmsy}{m}{n}
+\SetMathAlphabet{\mathcal}{bold}{OMS}{lmsy}{b}{n}
+
+% Use TeX Gyre Heros for sans and \mathsf.
+\RequirePackage[scale=0.9]{tgheros}
+\DeclareMathAlphabet{\mathsf}{\encodingdefault}{\sfdefault}{\mddefault}{n}
+\SetMathAlphabet{\mathsf}{bold}{\encodingdefault}{\sfdefault}{\bfdefault}{n}
+
+% https://narkive.com/eANktZj3.5
+\def\big{\bBigg@{1}}
+\def\Big{\bBigg@{1.5}}
+\def\bigg{\bBigg@{2.4}}
+\def\Bigg{\bBigg@{3.2}}
+
+\RequirePackage{bm}
+
+% If we're using emem.sty, define fonts for captions.
+\@ifpackageloaded{emem}{%
+  \def\Inter@scale{0.88}
+  \def\cap@family{\fontfamily{Inter-LF}\selectfont}
+  \def\cap@altfamily{\fontseries{semibold}\fontfamily{Inter-LF}\selectfont}
+}
+
+\endinput
+
+% vim: ft=tex fdm=marker et sts=2 sw=2 nospell cole=0

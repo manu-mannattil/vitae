@@ -1,6 +1,6 @@
 # vitæ
 
-[![PDF](https://shields.io/badge/PDF-master-informational)](https://raw.githubusercontent.com/manu-mannattil/assets/master/vitae/vitae.pdf)
+[![PDF](https://shields.io/badge/PDF-master-informational)](https://raw.githubusercontent.com/manu-mannattil/vitae/build/vitae.pdf)
 
 My curriculum vitæ.  To generate a PDF version, run `make` or compile
 using pdflatex.  Using make would automatically generate the
