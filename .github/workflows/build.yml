@@ -1,0 +1,47 @@
+name: build
+
+# Run the workflow only when pushing to the main branch.
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Rather than install texlive-full using apt, which is
+    # bound to take a zillion years, make use of a public
+    # TeX Live Docker image.
+    container:
+      image: ghcr.io/xu-cheng/texlive-full:latest
+    steps:
+      - name: Install git
+        run: |
+          apk add git
+
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Generate PDFs
+        run: |
+          git clone --depth=1 https://github.com/manu-mannattil/texmf
+          export TEXMFHOME=./texmf
+
+          # For some reason, Git doesn't treat the checked
+          # out directory as a Git repo unless we do this.
+          # https://github.com/actions/checkout/issues/363#issuecomment-1163942488
+          # https://github.com/actions/runner/issues/2033
+          git config --global --add safe.directory $(realpath .)
+
+          make
+          mkdir build
+          mv -f *.pdf build
+
+      - name: Push PDFs to "build" branch
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: build # The branch name where you want to push the assets
+          FOLDER: build # The directory where your assets are generated
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this
+          MESSAGE: "Build PDFs ({sha})"

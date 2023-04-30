@@ -98,7 +98,7 @@
 }
 
 % Git commit info.
-\ifdefined\gitInfo\else\def\gitInfo{gitInfo.in}\fi
+\ifdefined\gitInfo\else\def\gitInfo{.git/gitInfo.in}\fi
 \IfFileExists{\gitInfo}{\input{\gitInfo}}{
   \def\gitError{$\heartsuit\heartsuit\heartsuit$}
   \def\gitHash{\gitError}

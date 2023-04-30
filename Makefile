@@ -18,14 +18,14 @@ gitinfo:
 		\def\gitCommitterEmail{%ce}   \
 		\def\gitCommitterDate{%ci}    \
 		\def\gitCommitterAltDate{%cD} \
-	" HEAD >gitInfo.in
+	" HEAD >.git/gitInfo.in
 
 clean:
 	rm -f .git/gitHeadInfo.gin
 	rm -f *.aux *.log *.out *.fdb_latexmk *.fls *.gz
 
 distclean: clean
-	rm vitae.pdf
+	rm -f vitae.pdf
 
 upload: all
 	cp vitae.pdf ~/code/assets/vitae
