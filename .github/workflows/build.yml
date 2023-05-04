@@ -47,14 +47,13 @@ jobs:
           GIT_BRANCH: "build"
           GIT_MESSAGE: ""
         run: |
-          mv build ..
-
           git config --global user.name ${{ github.actor }}
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-
           git switch "$GIT_BRANCH" || git switch --orphan "$GIT_BRANCH"
-          mv .git ../build
-          cd ../build
+
+          # Move .git to the build dir and recommit.
+          mv .git ./build
+          cd ./build
           git add .
           git commit --allow-empty-message -m "$GIT_MESSAGE"
           git push -u origin "$GIT_BRANCH" --force
