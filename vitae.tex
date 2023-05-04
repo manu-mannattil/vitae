@@ -22,7 +22,7 @@
 % Preamble {{{1
 % -------------
 
-\documentclass[10pt,article,oneside]{memoir}
+\documentclass[10pt,a4paper,article,oneside]{memoir}
 
 \def\fname{Manu Mannattil}                % Set your full name here.
 \def\iname{M.~Mannattil}                  % Set your intials + last name here.
@@ -32,14 +32,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
 
-\usepackage[
-  top=1.1in,
-  bottom=0.85in,
-  left=1.2in,
-  right=1.2in,
-  headsep=0.25in,
-% showframe
-]{geometry}
+% 1in margins around.
+\setlrmarginsandblock{1in}{1in}{*}
+\setulmarginsandblock{1in}{1in}{*}
+\checkandfixthelayout
 
 \usepackage{color}
 \definecolor{bs1}{rgb}{0.207843,0.415686,0.623529}
@@ -58,7 +54,7 @@
 
 % Custom commands.
 \def\email#1{\href{mailto:#1}{#1}}
-\def\doi#1#2{\href{https://dx.doi.org/#1}{#2}}
+\def\doi#1#2{\href{https://doi.org/#1}{#2}}
 \def\arxiv#1#2{\href{https://arxiv.org/abs/#1}{arXiv:#1 [#2]}}
 
 \usepackage[widespace]{fourier}
@@ -140,7 +136,7 @@
   \begin{tabular}{@{}rl@{}}
     Phone: & (+1)~315-515-7373\\
     Email: & \email{manu.mannattil@posteo.net}\\
-    Web: & \href{https://manu-mannattil.github.io}{manu-mannattil.github.io}
+    Web: & \href{https://manu-mannattil.github.io}{manu-mannattil.github.io}\\
   \end{tabular}
 \end{minipage}
 
@@ -220,9 +216,13 @@ Kishore Vaigyanik Protsahan Yojana, Department of Science and Technology, Govern
 
 \section{Talks and Posters}
 
+Asymptotics, Geometry, and Soft Matter: Tel Aviv University, March 2023; Georgia Institute of Technology, March 2023; Universit\'{e} Paris-Saclay, March 2023.
+
+Can One Hear the Shape of a Filament?: APS March Meeting '23.
+
 Thermal Fluctuations of Singular Bar-Joint Mechanisms: APS March Meetings '21 and '22; Simons Center for Geometry and Physics, Stony Brook University, May 2022.
 
-Introduction to Nonlinear Time Series Analysis: Modelling and Simulation Lab, Indian Institute of Technology Kanpur, August 2015.
+Introduction to Nonlinear Time Series Analysis: Indian Institute of Technology Kanpur, August 2015.
 
 % Service {{{1
 % ------------
@@ -251,7 +251,39 @@ Instructor for PHY 212 (Electricity \& Magnetism); Grader for PHY 731 (Graduate 
 
 \emph{Languages.---} English (fluent), Hindi (basic), and Malayalam (native).
 
-\emph{Computer skills.---} Experience writing well-documented and modular software in Python, C++, Wolfram Language, Vim script, AWK, and various shells (Bash, POSIX sh, etc.); seasoned user of Unix-like operating systems and related software.
+\emph{Computer skills.---} Experience writing well-documented and modular software in Python, C++, Mathematica, Vim script, AWK, and various shells (Bash, POSIX sh, etc.); seasoned user of Unix-like operating systems and related software.
+
+% References {{{1
+% ---------------
+
+% \section{References}
+%
+% \begin{minipage}[t]{0.28\textwidth}
+%   \begin{tabular}{@{}l}
+%   Christian D.~Santangelo\\
+%   Department of Physics\\
+%   Syracuse University\\
+%   \email{cdsantan@syr.edu}
+%   \end{tabular}
+% \end{minipage}
+% %
+% \begin{minipage}[t]{0.28\textwidth}
+%   \begin{tabular}{@{}l}
+%   Jennifer M.~Schwarz\\
+%   Department of Physics\\
+%   Syracuse University\\
+%   \email{jmschwa02@syr.edu}
+%   \end{tabular}
+% \end{minipage}
+% %
+% \begin{minipage}[t]{0.28\textwidth}
+%   \begin{tabular}{@{}l}
+%   Sagar Chakraborty\\
+%   Department of Physics\\
+%   Indian Insitute of Technology Kanpur\\
+%   \email{sagarc@iitk.ac.in}
+%   \end{tabular}
+% \end{minipage}
 
 % Revision Information {{{1
 % -------------------------

@@ -35,13 +35,26 @@ jobs:
 
           make
           mkdir build
-          mv -f *.pdf build
+          mv -f vitae.pdf build
 
-      - name: Push PDFs to "build" branch
-        uses: s0/git-publish-subdir-action@develop
+      # The purpose here is to replace the contents of
+      # the target branch with the contents of the build
+      # directory.  This is an NIH hack to avoid the use of
+      # existing actions like s0/git-publish-subdir-action,
+      # which is a 500+ SLOC mess written in node.js.
+      - name: push build to separate branch
         env:
-          REPO: self
-          BRANCH: build # The branch name where you want to push the assets
-          FOLDER: build # The directory where your assets are generated
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this
-          MESSAGE: "Build PDFs ({sha})"
+          GIT_BRANCH: "build"
+          GIT_MESSAGE: ""
+        run: |
+          mv build ..
+
+          git config --global user.name ${{ github.actor }}
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+          git switch "$GIT_BRANCH" || git switch --orphan "$GIT_BRANCH"
+          mv .git ../build
+          cd ../build
+          git add .
+          git commit --allow-empty-message -m "$GIT_MESSAGE"
+          git push -u origin "$GIT_BRANCH" --force

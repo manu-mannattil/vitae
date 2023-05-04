@@ -26,10 +26,3 @@ clean:
 
 distclean: clean
 	rm -f vitae.pdf
-
-upload: all
-	cp vitae.pdf ~/code/assets/vitae
-	cd ~/code/assets/vitae; \
-	git add --all ; \
-	git diff-index --quiet HEAD || git commit --allow-empty-message -m '' ; \
-	git push -f
