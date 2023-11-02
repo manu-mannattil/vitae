@@ -32,9 +32,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
 
-% 1in margins around.
-\setlrmarginsandblock{1in}{1in}{*}
-\setulmarginsandblock{1in}{1in}{*}
+\setlrmarginsandblock{1.25in}{1.25in}{*}
+\setulmarginsandblock{1.25in}{1.25in}{*}
 \checkandfixthelayout
 
 \usepackage{color}
@@ -57,16 +56,16 @@
 \def\doi#1#2{\href{https://doi.org/#1}{#2}}
 \def\arxiv#1#2{\href{https://arxiv.org/abs/#1}{arXiv:#1 [#2]}}
 
-\usepackage[widespace]{fourier}
-\usepackage[scale=0.88,sb]{inter}
+\usepackage{gentium}
+\linespread{1.05}
 
 % Section styling.
-\setsecheadstyle{\bfseries\sffamily}
-\setbeforesecskip{\baselineskip}
-\setaftersecskip{0.5\baselineskip}
-\setsubsecheadstyle{\itshape\sffamily}
-\setbeforesubsecskip{0.5\baselineskip}
-\setaftersubsecskip{0.5\baselineskip}
+\setsecheadstyle{\bfseries}
+\setbeforesecskip{1.25\baselineskip}
+\setaftersecskip{0.37\baselineskip}
+\setsubsecheadstyle{\itshape}
+\setbeforesubsecskip{0.75\baselineskip}
+\setaftersubsecskip{0.25\baselineskip}
 \setcounter{secnumdepth}{0}
 
 % From Section 3.5 of memoir's documentation.
@@ -110,24 +109,38 @@
   \def\gitCommitterAltDate{\gitError}
 }
 
+\def\headerstyle#1{%
+  \textls[120]{%
+    \spaceskip=1.5\fontdimen2\font plus 1.5\fontdimen3\font minus 1.5\fontdimen4\font%
+    \MakeUppercase{#1}%
+  }%
+}
+
+% Header and footer.
+\makeoddhead{headings}{}{\headerstyle{Curriculum {Vit\ae} --- \fname}}{}
+\makeoddfoot{plain}{}{\headerstyle{\thepage}}{} % first page
+\makeoddfoot{headings}{}{\headerstyle{\thepage}}{} % other pages
+\pagestyle{headings}
+
 \begin{document}
 
 % Name and Contact Details {{{1
 % -----------------------------
 
+\thispagestyle{plain}
 \hangpars
 
-{\sffamily\Large CURRICULUM VIT\AE}
+{\Large\headerstyle{CURRICULUM VIT\AE}}
 \vskip2.25em
 
-{\bfseries\sffamily\large\fname}
+{\bfseries\large\fname}
 \vskip1em
 
 \begin{minipage}[t]{0.45\textwidth}
   \begin{tabular}{@{}l}
-  Department of Physics\\
-  Syracuse University\\
-  Syracuse, NY 13244
+  School of Chemistry\\
+  Tel Aviv University\\
+  Tel Aviv 69978, Israel
   \end{tabular}
 \end{minipage}
 %
@@ -136,7 +149,7 @@
   \begin{tabular}{@{}rl@{}}
     Phone: & (+1)~315-515-7373\\
     Email: & \email{manu.mannattil@posteo.net}\\
-    Web: & \href{https://manu-mannattil.github.io}{manu-mannattil.github.io}\\
+    \phantom{}
   \end{tabular}
 \end{minipage}
 
@@ -152,8 +165,8 @@ Born on August 13, 1991 in Palakkad, Kerala; Indian citizen.
 
 \section{Education}
 
-Syracuse University, Syracuse, New York, USA; August~2017--.\\
-Ph.D. in Physics, August 2023 (expected); GPA: 3.958/4.000.
+Syracuse University, Syracuse, New York, USA; August~2017--August 2023.\\
+Ph.D. in Physics, August 2023; Dissertation: \emph{\href{https://raw.githubusercontent.com/manu-mannattil/thesis/build/thesis.pdf}{Asymptotics, Geometry, and Soft Matter}}.
 
 Indian Institute of Technology Kanpur, Kanpur, Uttar Pradesh, India; July~2009--July~2014.\\
 Integrated~M.Sc. in Physics, February~2015.
@@ -163,29 +176,37 @@ Integrated~M.Sc. in Physics, February~2015.
 
 \section{Employment History}
 
-Research Assistant, Department of Physics, Syracuse University; May 2019--.
+Postdoctoral Fellow, School of Chemistry, Tel Aviv University; October 2023--.
+
+Research Assistant, Department of Physics, Syracuse University; May 2019--August 2023.
 
 Teaching Assistant, Department of Physics, Syracuse University; August~2017--May 2019.
 
-Project Associate, Nonlinear Dynamical Systems Group, Indian Institute of Technology Kanpur; September 2014--October 2015.
+Project Associate, Nonlinear Dynamical Systems Group, Indian Institute of Technology Kanpur;\\ September 2014--October 2015.
 
 % Publications {{{1
 % -----------------
 
 \section{Publications}
 
-\subsection{Works in progress}
+% \subsection{Works in progress}
+
+% \begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
+%   \setlength{\itemsep}{-0.25em}
+%   \item[1.] {\bname}, ``Energy and Free-Energy Landscapes of Soft Few-Body Systems With Singular Constraints'', forthcoming.
+% \end{flexlabelled}
+
+%\subsection{Preprints}
+
+%\begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
+% \setlength{\itemsep}{-0.25em}
+% \end{flexlabelled}
+
+%\subsection{Refereed journal papers}
 
 \begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
-  \setlength{\itemsep}{-0.25em}
-  \item[2.] {\bname}, ``Energy and Free-Energy Landscapes of Soft Few-Body Systems With Singular Constraints'', forthcoming (early 2023).
-  \item[1.] {\bname} and Christian D.~Santangelo, ``Geometric Localization of Waves on Thin Elastic Structures'', forthcoming (early 2023).
-\end{flexlabelled}
-
-\subsection{Refereed journal papers}
-
-\begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
-  \setlength{\itemsep}{-0.25em}
+  \setlength{\itemsep}{0pt}
+  \item[6.] {\bname} and Christian D.~Santangelo, ``Geometric Localization of Waves on Thin Elastic Structures'', \arxiv{2306.07213}{cond-mat.soft}.
   \item[5.] \bname, J.~M.~Schwarz, and Christian D.~Santangelo, ``Thermal Fluctuations of Singular Bar-Joint Mechanisms'', \doi{10.1103/PhysRevLett.128.208005}{Phys.~Rev.~Lett.~\textbf{128}, 208005 (2022)}, \arxiv{2112.04279}{cond-mat.soft}.
   \item[4.] \bname, Ambrish Pandey, Mahendra K.~Verma, and Sagar Chakraborty, ``On the applicability of low-dimensional models for convective flow reversals at extreme Prandtl numbers'', \doi{10.1140/epjb/e2017-80391-1}{Eur.~Phys.~J.~B~\textbf{90}, 259~(2017)}, \arxiv{1711.01510}{physics.flu-dyn}.
   \item[3.] \bname, Himanshu Gupta, and Sagar Chakraborty, ``Revisiting Evidence of Chaos in X-ray Light Curves: The Case of GRS~1915+105'', \doi{10.3847/1538-4357/833/2/208}{Astrophys.~J.~\textbf{833}, 208~(2016)}, \arxiv{1611.02264}{astro-ph.HE}.
@@ -196,7 +217,7 @@ Project Associate, Nonlinear Dynamical Systems Group, Indian Institute of Techno
 \subsection{Scientific software}
 
 \begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
-  \setlength{\itemsep}{-0.25em}
+  \setlength{\itemsep}{0pt}
   \item[1.] \href{https://github.com/manu-mannattil/NoLiTSA}{NoLiTSA} is a Python module for nonlinear time series analysis that I developed between 2015 and 2017.  It has now been used in over 15 scientific publications, and has over 100 stars on GitHub.
 \end{flexlabelled}
 
@@ -204,6 +225,8 @@ Project Associate, Nonlinear Dynamical Systems Group, Indian Institute of Techno
 % ----------------------
 
 \section{Awards and Honors}
+
+Harry Bloomfield Postdoctoral Fellowship, Tel Aviv University, October 2023.
 
 College of Arts \& Sciences Award, Syracuse University, May 2020.
 
