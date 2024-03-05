@@ -56,8 +56,8 @@
 \def\doi#1#2{\href{https://doi.org/#1}{#2}}
 \def\arxiv#1#2{\href{https://arxiv.org/abs/#1}{arXiv:#1 [#2]}}
 
-\usepackage{gentium}
-\linespread{1.05}
+\usepackage{mlmodern}
+\def\bfdefault{b}
 
 % Section styling.
 \setsecheadstyle{\bfseries}
@@ -116,11 +116,19 @@
   }%
 }
 
+\makeatletter
+\g@addto@macro\itemize{\setlength{\itemsep}{-1pt}\sloppy}
+\g@addto@macro\enumerate{\setlength{\itemsep}{-1pt}\sloppy}
+\g@addto@macro\description{\setlength{\itemsep}{0pt}}
+\makeatother
+
 % Header and footer.
-\makeoddhead{headings}{}{\headerstyle{Curriculum {Vit\ae} --- \fname}}{}
-\makeoddfoot{plain}{}{\headerstyle{\thepage}}{} % first page
-\makeoddfoot{headings}{}{\headerstyle{\thepage}}{} % other pages
-\pagestyle{headings}
+% \makeoddhead{headings}{}{\headerstyle{\small Curriculum {Vit\ae} --- \fname}}{}
+% \makeoddfoot{plain}{}{\headerstyle{\thepage}}{} % first page
+% \makeoddfoot{headings}{}{\headerstyle{\thepage}}{} % other pages
+% \pagestyle{headings}
+
+\usepackage{graphicx}
 
 \begin{document}
 
@@ -147,7 +155,7 @@
 \begin{minipage}[b]{0.45\textwidth}
   \setlength{\tabcolsep}{2pt}
   \begin{tabular}{@{}rl@{}}
-    Phone: & (+1)~315-515-7373\\
+    Phone: & (+972)~55-304-0112\\
     Email: & \email{manu.mannattil@posteo.net}\\
     \phantom{}
   \end{tabular}
@@ -160,29 +168,38 @@
 
 Born on August 13, 1991 in Palakkad, Kerala; Indian citizen.
 
+Name in Malayalam: \hspace{-.3ex}\raisebox{-0.6ex}{\includegraphics[scale=0.92]{name-ml}}\hspace{.1ex},
+and in Hindi: \hspace{-.4ex}\raisebox{-0.7ex}{\includegraphics[scale=0.92]{name-hi}}\hspace{-0.15ex}.
+
 % Education {{{1
 % --------------
 
 \section{Education}
 
 Syracuse University, Syracuse, New York, USA; August~2017--August 2023.\\
-Ph.D. in Physics, August 2023; Dissertation: \emph{\href{https://raw.githubusercontent.com/manu-mannattil/thesis/build/thesis.pdf}{Asymptotics, Geometry, and Soft Matter}}.
+Ph.D.~in Physics, August 2023; Dissertation: \emph{\href{https://raw.githubusercontent.com/manu-mannattil/thesis/build/thesis.pdf}{Asymptotics, Geometry, and Soft Matter}}.
 
 Indian Institute of Technology Kanpur, Kanpur, Uttar Pradesh, India; July~2009--July~2014.\\
-Integrated~M.Sc. in Physics, February~2015.
+Integrated~M.Sc.~in Physics, February~2015.
+
+% Bhavan's Vidya Mandir, Thrissur, Kerala; June~2007--March~2009.\\
+% Indian Senior School Certificate, May 2009.
+
+% Hari Sri Vidya Nidhi School, Thrissur, Kerala; May~2005--March~2007.\\
+% Indian Certificate of Seconday Education, May 2007.
 
 % Employment History {{{1
 % -----------------------
 
 \section{Employment History}
 
-Postdoctoral Fellow, School of Chemistry, Tel Aviv University; October 2023--.
+Postdoctoral Fellow, School of Chemistry and School of Physics, Tel Aviv University;\\ October 2023--.
 
 Research Assistant, Department of Physics, Syracuse University; May 2019--August 2023.
 
 Teaching Assistant, Department of Physics, Syracuse University; August~2017--May 2019.
 
-Project Associate, Nonlinear Dynamical Systems Group, Indian Institute of Technology Kanpur;\\ September 2014--October 2015.
+Project Associate, Department of Physics, Indian Institute of Technology Kanpur;\\ September 2014--October 2015.
 
 % Publications {{{1
 % -----------------
@@ -204,22 +221,20 @@ Project Associate, Nonlinear Dynamical Systems Group, Indian Institute of Techno
 
 %\subsection{Refereed journal papers}
 
-\begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
-  \setlength{\itemsep}{0pt}
-  \item[6.] {\bname} and Christian D.~Santangelo, ``Geometric Localization of Waves on Thin Elastic Structures'', \arxiv{2306.07213}{cond-mat.soft}.
+\begin{enumerate}
+  \item[6.] {\bname} and Christian D.~Santangelo, ``Geometric localization of waves on thin elastic structures'', \doi{10.1103/PhysRevE.109.035001}{Phys.~Rev.~E \textbf{109}, 035001 (2024)}, \arxiv{2306.07213}{cond-mat.soft}.
   \item[5.] \bname, J.~M.~Schwarz, and Christian D.~Santangelo, ``Thermal Fluctuations of Singular Bar-Joint Mechanisms'', \doi{10.1103/PhysRevLett.128.208005}{Phys.~Rev.~Lett.~\textbf{128}, 208005 (2022)}, \arxiv{2112.04279}{cond-mat.soft}.
   \item[4.] \bname, Ambrish Pandey, Mahendra K.~Verma, and Sagar Chakraborty, ``On the applicability of low-dimensional models for convective flow reversals at extreme Prandtl numbers'', \doi{10.1140/epjb/e2017-80391-1}{Eur.~Phys.~J.~B~\textbf{90}, 259~(2017)}, \arxiv{1711.01510}{physics.flu-dyn}.
   \item[3.] \bname, Himanshu Gupta, and Sagar Chakraborty, ``Revisiting Evidence of Chaos in X-ray Light Curves: The Case of GRS~1915+105'', \doi{10.3847/1538-4357/833/2/208}{Astrophys.~J.~\textbf{833}, 208~(2016)}, \arxiv{1611.02264}{astro-ph.HE}.
   \item[2.] Aditya Tandon, Malte Schr\"{o}der, \bname, Marc Timme, and Sagar Chakraborty, ``Synchronizing noisy nonidentical oscillators by transient uncoupling'', \doi{10.1063/1.4959141}{Chaos \textbf{26}, 094817~(2016)}, \arxiv{1611.02298}{nlin.CD}.
   \item[1.] Malte Schr\"{o}der, \bname, Debabrata Dutta, Sagar Chakraborty, and Marc Timme, ``Transient Uncoupling Induces Synchronization'', \doi{10.1103/PhysRevLett.115.054101}{Phys.~Rev.~Lett.~\textbf{115}, 054101~(2015)}, \arxiv{1508.06545}{nlin.CD}.
-\end{flexlabelled}
+\end{enumerate}
 
 \subsection{Scientific software}
 
-\begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
-  \setlength{\itemsep}{0pt}
+\begin{enumerate}
   \item[1.] \href{https://github.com/manu-mannattil/NoLiTSA}{NoLiTSA} is a Python module for nonlinear time series analysis that I developed between 2015 and 2017.  It has now been used in over 15 scientific publications, and has over 100 stars on GitHub.
-\end{flexlabelled}
+\end{enumerate}
 
 % Awards and Honors {{{1
 % ----------------------
@@ -272,9 +287,9 @@ Instructor for PHY 212 (Electricity \& Magnetism); Grader for PHY 731 (Graduate 
 
 \hangpars
 
-\emph{Languages.---} English (fluent), Hindi (basic), and Malayalam (native).
+\emph{Languages.\enspace} English (fluent), Hindi (basic), and Malayalam (native).
 
-\emph{Computer skills.---} Experience writing well-documented and modular software in Python, C++, Mathematica, Vim script, AWK, and various shells (Bash, POSIX sh, etc.); seasoned user of Unix-like operating systems and related software.
+\emph{Computer skills.\enspace} Experience writing well-documented and modular software in Python, C++, Mathematica, Vim script, AWK, and various shells (Bash, POSIX sh, etc.); seasoned user of Unix-like operating systems and related software.
 
 % References {{{1
 % ---------------
