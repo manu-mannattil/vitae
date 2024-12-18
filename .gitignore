@@ -1,14 +1,8 @@
 others/
-fail.txt
-interests.txt
+*.txt
 *.pdf
-!name-ml.pdf
-!name-hi.pdf
+!name-*.pdf
 
-# Created by https://www.gitignore.io/api/tex
-
-### TeX ###
-## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
 *.log
@@ -20,8 +14,6 @@ interests.txt
 *.fot
 *.cb
 *.cb2
-
-## Intermediate documents:
 *.dvi
 *.xdv
 *-converted-to.*

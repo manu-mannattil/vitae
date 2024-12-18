@@ -8,7 +8,7 @@
 % entire resume as a single LaTeX file.  The styling and
 % layout was partially inspired by Donald Knuth's CV [1].
 %
-% Copyright (c) 2014-2022, Manu Mannattil.
+% Copyright (c) 2014-2024, Manu Mannattil.
 % All rights reserved.
 %
 % Usage, modification, and distribution of this document,
@@ -56,8 +56,11 @@
 \def\doi#1#2{\href{https://doi.org/#1}{#2}}
 \def\arxiv#1#2{\href{https://arxiv.org/abs/#1}{arXiv:#1 [#2]}}
 
-\usepackage{mlmodern}
-\def\bfdefault{b}
+%\usepackage{mlmodern}
+%\usepackage{times}
+%\def\bfdefault{b}
+
+\usepackage{mathpazo}
 
 % Section styling.
 \setsecheadstyle{\bfseries}
@@ -67,6 +70,8 @@
 \setbeforesubsecskip{0.75\baselineskip}
 \setaftersubsecskip{0.25\baselineskip}
 \setcounter{secnumdepth}{0}
+
+\def\baselinestretch{1.0625}
 
 % From Section 3.5 of memoir's documentation.
 \clubpenalty=9996
@@ -82,6 +87,7 @@
   \parindent=-\leftskip%
   \setsecindent{-\leftskip}%
   \setsubsecindent{-\leftskip}%
+  \parskip=0pt
 }
 
 % Reset hanging paragraphs.
@@ -136,30 +142,37 @@
 % -----------------------------
 
 \thispagestyle{plain}
+\nohangpars
+
+{\large\headerstyle{CURRICULUM VIT\AE}}
+\vskip2em
+
+\section{\fname}
+
+School of Chemistry, and School of Physics and Astronomy,\\
+Tel Aviv University, Ramat Aviv, Tel Aviv 69978, Israel.\\
+
+Phone: (+972)~55-304-0112\\
+Email: \email{manu.mannattil@posteo.net}
+
+%\begin{minipage}[t]{0.5\textwidth}
+%  \begin{tabular}{@{}l}
+%  School of Chemistry and School of Physics and Astronomy,\\
+%  Tel Aviv University, Ramat Aviv,\\
+%  Tel Aviv 69978, Israel
+%  \end{tabular}
+%\end{minipage}
+%%
+%\begin{minipage}[b]{0.5\textwidth}
+%  \setlength{\tabcolsep}{2pt}
+%  \begin{tabular}{@{}rl@{}}
+%    Phone: & (+972)~55-304-0112\\
+%    Email: & \email{manu.mannattil@posteo.net}\\
+%    \phantom{}
+%  \end{tabular}
+%\end{minipage}
+
 \hangpars
-
-{\Large\headerstyle{CURRICULUM VIT\AE}}
-\vskip2.25em
-
-{\bfseries\large\fname}
-\vskip1em
-
-\begin{minipage}[t]{0.45\textwidth}
-  \begin{tabular}{@{}l}
-  School of Chemistry\\
-  Tel Aviv University\\
-  Tel Aviv 69978, Israel
-  \end{tabular}
-\end{minipage}
-%
-\begin{minipage}[b]{0.45\textwidth}
-  \setlength{\tabcolsep}{2pt}
-  \begin{tabular}{@{}rl@{}}
-    Phone: & (+972)~55-304-0112\\
-    Email: & \email{manu.mannattil@posteo.net}\\
-    \phantom{}
-  \end{tabular}
-\end{minipage}
 
 % Personal Information {{{1
 % -------------------------
@@ -193,11 +206,13 @@ Integrated~M.Sc.~in Physics, February~2015.
 
 \section{Employment History}
 
-Postdoctoral Fellow, School of Chemistry and School of Physics, Tel Aviv University;\\ October 2023--.
+Postdoctoral Fellow, School of Chemistry, Tel Aviv University; October 2023--.
+
+Postdoctoral Fellow, School of Physics and Astronomy, Tel Aviv University; October 2023--.
 
 Research Assistant, Department of Physics, Syracuse University; May 2019--August 2023.
 
-Teaching Assistant, Department of Physics, Syracuse University; August~2017--May 2019.
+Teaching Assistant, Department of Physics, Syracuse University; August~2017--May 2022.
 
 Project Associate, Department of Physics, Indian Institute of Technology Kanpur;\\ September 2014--October 2015.
 
@@ -206,12 +221,12 @@ Project Associate, Department of Physics, Indian Institute of Technology Kanpur;
 
 \section{Publications}
 
-% \subsection{Works in progress}
+\subsection{Works in progress}
 
-% \begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
-%   \setlength{\itemsep}{-0.25em}
-%   \item[1.] {\bname}, ``Energy and Free-Energy Landscapes of Soft Few-Body Systems With Singular Constraints'', forthcoming.
-% \end{flexlabelled}
+\begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
+  \setlength{\itemsep}{-0.25em}
+  \item[1.] {\bname}, ``Energy and free-energy landscapes of soft few-body systems with singular constraints'', forthcoming.
+\end{flexlabelled}
 
 %\subsection{Preprints}
 
@@ -219,9 +234,10 @@ Project Associate, Department of Physics, Indian Institute of Technology Kanpur;
 % \setlength{\itemsep}{-0.25em}
 % \end{flexlabelled}
 
-%\subsection{Refereed journal papers}
+\subsection{Papers}
 
 \begin{enumerate}
+  \item[7.] {\bname}, Haim Diamant, and David Andelman, ``Theory of Phase Separation in Elastomers'', \arxiv{2412.05910}{cond-mat.soft} (2024).
   \item[6.] {\bname} and Christian D.~Santangelo, ``Geometric localization of waves on thin elastic structures'', \doi{10.1103/PhysRevE.109.035001}{Phys.~Rev.~E \textbf{109}, 035001 (2024)}, \arxiv{2306.07213}{cond-mat.soft}.
   \item[5.] \bname, J.~M.~Schwarz, and Christian D.~Santangelo, ``Thermal Fluctuations of Singular Bar-Joint Mechanisms'', \doi{10.1103/PhysRevLett.128.208005}{Phys.~Rev.~Lett.~\textbf{128}, 208005 (2022)}, \arxiv{2112.04279}{cond-mat.soft}.
   \item[4.] \bname, Ambrish Pandey, Mahendra K.~Verma, and Sagar Chakraborty, ``On the applicability of low-dimensional models for convective flow reversals at extreme Prandtl numbers'', \doi{10.1140/epjb/e2017-80391-1}{Eur.~Phys.~J.~B~\textbf{90}, 259~(2017)}, \arxiv{1711.01510}{physics.flu-dyn}.
@@ -241,11 +257,11 @@ Project Associate, Department of Physics, Indian Institute of Technology Kanpur;
 
 \section{Awards and Honors}
 
-Harry Bloomfield Postdoctoral Fellowship, Tel Aviv University, October 2023.
+Bloomfield Postdoctoral Fellowship, Tel Aviv University, October 2023.
 
 College of Arts \& Sciences Award, Syracuse University, May 2020.
 
-Fellowship from the Henry Levinstein fund, Department of Physics, Syracuse University, April 2018.
+Henry Levinstein Fellowship, Department of Physics, Syracuse University, April 2018.
 
 Kishore Vaigyanik Protsahan Yojana, Department of Science and Technology, Government of India, March 2011.
 
@@ -254,13 +270,19 @@ Kishore Vaigyanik Protsahan Yojana, Department of Science and Technology, Govern
 
 \section{Talks and Posters}
 
+Geometric Localization of Waves on Thin Elastic Structures: Tel Aviv University, February 2024; The Technion -- Israel Institute of Technology, August 2024.
+
+A Linear Model for Elastic Phase Separation: BioSoft Day, Tel Aviv University, June 2024.
+
 Asymptotics, Geometry, and Soft Matter: Tel Aviv University, March 2023; Georgia Institute of Technology, March 2023; Universit\'{e} Paris-Saclay, March 2023.
 
-Can One Hear the Shape of a Filament?: APS March Meeting '23.
+Can One Hear the Shape of a Filament?: APS March Meeting '23, Las Vegas.
 
-Thermal Fluctuations of Singular Bar-Joint Mechanisms: APS March Meetings '21 and '22; Simons Center for Geometry and Physics, Stony Brook University, May 2022.
+Thermal Fluctuations of Singular Bar-Joint Mechanisms: APS March Meeting '22, Chicago; Simons Center for Geometry and Physics, Stony Brook University, May 2022.
 
-Introduction to Nonlinear Time Series Analysis: Indian Institute of Technology Kanpur, August 2015.
+Thermal Fluctuations of Singular Networks: APS March Meeting '21, Virtual.
+
+Topics in Nonlinear Time Series Analysis: Indian Institute of Technology Kanpur, August 2015.
 
 % Service {{{1
 % ------------
@@ -278,7 +300,20 @@ Manuscript reviewer for \emph{Physics of Fluids}.
 
 \subsection{Syracuse University}
 
-Instructor for PHY 212 (Electricity \& Magnetism); Grader for PHY 731 (Graduate Statistical Mechanics); Teaching Assistant for PHY 215 (Honors Mechanics), PHY 211 (General Mechanics), PHY 222 (Electricity \& Magnetism Lab), and AST 101 (Introductory Astronomy).
+%Instructor for PHY 212 (Electricity \& Magnetism); Grader for PHY 731 (Graduate Statistical Mechanics); Teaching Assistant for PHY 215 (Honors Mechanics), PHY 211 (General Mechanics), PHY 222 (Electricity \& Magnetism Lab), and AST 101 (Introductory Astronomy).
+
+\begin{tabular}{@{}lr}
+  Grader, PHY 741: Graduate Statistical Mechanics                                              & \emph{Spring 2022} \\
+  Teaching Assistant, PHY 212: General Physics II (Electricity \& Magnetism)                   & \emph{Spring 2020} \\
+  Teaching Assistant, AST 101: Our Corner of the Universe                                      & \emph{Fall 2019}   \\
+  Course Instructor, PHY 212: General Physics II (Electricity \& Magnetism)                    & \emph{Summer 2019} \\
+  Teaching Assistant, PHY 222: General Physics II Lab (Electricity \& Magnetism)               & \emph{Spring 2019} \\
+  Teaching Assistant, PHY 211: General Physics I (Mechanics)                                   & \emph{Fall 2018}   \\
+  Teaching Assistant, PHY 215: General Physics I for Majors (Mechanics)                        & \emph{Fall 2018}   \\
+  Teaching Assistant, AST 101: Our Corner in the Universe                                      & \emph{Summer 2018} \\
+  Teaching Assistant, PHY 212: General Physics II (Electricity \& Magnetism)                   & \emph{Spring 2018} \\
+  Teaching Assistant, AST 101: Our Corner in the Universe                                      & \emph{Fall 2017}
+\end{tabular}
 
 % Miscellaneous {{{1
 % ------------------
@@ -294,34 +329,56 @@ Instructor for PHY 212 (Electricity \& Magnetism); Grader for PHY 731 (Graduate 
 % References {{{1
 % ---------------
 
-% \section{References}
+\section{References}
+
+\phantom{}\\[-2em]
+
+\begin{minipage}[t]{0.28\textwidth}
+  \begin{tabular}{@{}l}
+  Christian D.~Santangelo\\
+  Department of Physics\\
+  Syracuse University\\
+  \email{cdsantan@syr.edu}
+  \end{tabular}
+\end{minipage}
 %
-% \begin{minipage}[t]{0.28\textwidth}
-%   \begin{tabular}{@{}l}
-%   Christian D.~Santangelo\\
-%   Department of Physics\\
-%   Syracuse University\\
-%   \email{cdsantan@syr.edu}
-%   \end{tabular}
-% \end{minipage}
-% %
-% \begin{minipage}[t]{0.28\textwidth}
-%   \begin{tabular}{@{}l}
-%   Jennifer M.~Schwarz\\
-%   Department of Physics\\
-%   Syracuse University\\
-%   \email{jmschwa02@syr.edu}
-%   \end{tabular}
-% \end{minipage}
-% %
-% \begin{minipage}[t]{0.28\textwidth}
-%   \begin{tabular}{@{}l}
-%   Sagar Chakraborty\\
-%   Department of Physics\\
-%   Indian Insitute of Technology Kanpur\\
-%   \email{sagarc@iitk.ac.in}
-%   \end{tabular}
-% \end{minipage}
+\begin{minipage}[t]{0.28\textwidth}
+  \begin{tabular}{@{}l}
+  David Andelman\\
+  School of Physics\\
+  Tel Aviv University\\
+  \email{andelman@post.tau.ac.il}
+  \end{tabular}
+\end{minipage}
+%
+\begin{minipage}[t]{0.28\textwidth}
+  \begin{tabular}{@{}l}
+  Haim Diamant\\
+  School of Chemistry\\
+  Tel Aviv University\\
+  \email{hdiamant@tauex.tau.ac.il}
+  \end{tabular}
+\end{minipage}
+
+%\phantom{}\\[-0.5em]
+
+%\begin{minipage}[t]{0.28\textwidth}
+%  \begin{tabular}{@{}l}
+%  Jennifer M.~Schwarz\\
+%  Department of Physics\\
+%  Syracuse University\\
+%  \email{jmschwa02@syr.edu}
+%  \end{tabular}
+%\end{minipage}
+%%
+%\begin{minipage}[t]{0.28\textwidth}
+%  \begin{tabular}{@{}l}
+%  Sagar Chakraborty\\
+%  Department of Physics\\
+%  Indian Insitute of Technology Kanpur\\
+%  \email{sagarc@iitk.ac.in}
+%  \end{tabular}
+%\end{minipage}
 
 % Revision Information {{{1
 % -------------------------

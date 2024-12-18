@@ -3,7 +3,7 @@
 all: gitinfo vitae.pdf
 
 %.pdf: %.tex
-	pdflatex $<
+	pdflatex -file-line-error -interaction=nonstopmode -shell-escape -synctex=1 $<
 
 gitinfo:
 	git --no-pager log -1 --date=short --decorate=short --pretty=format:"\
