@@ -6,6 +6,7 @@ all: gitinfo vitae.pdf
 	pdflatex -file-line-error -interaction=nonstopmode -shell-escape -synctex=1 $<
 
 gitinfo:
+	mkdir -p .git
 	git --no-pager log -1 --date=short --decorate=short --pretty=format:"\
 		\def\gitHash{%H}              \
 		\def\gitShortHash{%h}         \
@@ -21,7 +22,7 @@ gitinfo:
 	" HEAD >.git/gitInfo.in
 
 clean:
-	rm -f .git/gitHeadInfo.gin
+	rm -f .git/gitInfo.in
 	rm -f *.aux *.log *.out *.fdb_latexmk *.fls *.gz
 
 distclean: clean

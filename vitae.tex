@@ -8,7 +8,7 @@
 % entire resume as a single LaTeX file.  The styling and
 % layout was partially inspired by Donald Knuth's CV [1].
 %
-% Copyright (c) 2014-2024, Manu Mannattil.
+% Copyright (c) 2014-2025, Manu Mannattil.
 % All rights reserved.
 %
 % Usage, modification, and distribution of this document,
@@ -22,10 +22,9 @@
 % Preamble {{{1
 % -------------
 
-\documentclass[10pt,a4paper,article,oneside]{memoir}
+\documentclass[10pt,article,oneside]{memoir}
 
 \def\fname{Manu Mannattil}                % Set your full name here.
-\def\iname{M.~Mannattil}                  % Set your intials + last name here.
 \def\bname{\underline{Manu Mannattil}}    % Set your name as you'd like it to appear in bibliographies.
 
 \usepackage[T1]{fontenc}
@@ -60,7 +59,9 @@
 %\usepackage{times}
 %\def\bfdefault{b}
 
-\usepackage{mathpazo}
+\usepackage[osf]{mathpazo}
+% OSF makes \textsl use ordinary italics.
+\def\textsl#1{\bgroup\fontfamily{ppl}\selectfont\slshape{#1}\egroup}
 
 % Section styling.
 \setsecheadstyle{\bfseries}
@@ -83,11 +84,11 @@
 
 % Hanging paragraphs throughout.
 \def\hangpars{%
-  \leftskip=1.75em%
+  \leftskip=2em%
   \parindent=-\leftskip%
   \setsecindent{-\leftskip}%
   \setsubsecindent{-\leftskip}%
-  \parskip=0pt
+  \parskip=0.5pt
 }
 
 % Reset hanging paragraphs.
@@ -149,7 +150,7 @@
 
 \section{\fname}
 
-School of Chemistry, and School of Physics and Astronomy,\\
+School of Chemistry and School of Physics and Astronomy,\\
 Tel Aviv University, Ramat Aviv, Tel Aviv 69978, Israel.\\
 
 Phone: (+972)~55-304-0112\\
@@ -172,6 +173,14 @@ Email: \email{manu.mannattil@posteo.net}
 %  \end{tabular}
 %\end{minipage}
 
+% Research Interests {{{1
+% -----------------------
+
+\section{Research Interests}
+
+Broad interests in theoretical soft matter physics, statistical mechanics, and applied mathematics.
+Recent studies address problems in phase separation, elasticity theory, wave mechanics, WKB theory, geometric aspects of soft matter, free-energy landscapes, and nonlinear dynamics.
+
 \hangpars
 
 % Personal Information {{{1
@@ -182,7 +191,7 @@ Email: \email{manu.mannattil@posteo.net}
 Born on August 13, 1991 in Palakkad, Kerala; Indian citizen.
 
 Name in Malayalam: \hspace{-.3ex}\raisebox{-0.6ex}{\includegraphics[scale=0.92]{name-ml}}\hspace{.1ex},
-and in Hindi: \hspace{-.4ex}\raisebox{-0.7ex}{\includegraphics[scale=0.92]{name-hi}}\hspace{-0.15ex}.
+and in Devanagari: \hspace{-.4ex}\raisebox{-0.7ex}{\includegraphics[scale=0.92]{name-dv}}\hspace{-0.15ex}.
 
 % Education {{{1
 % --------------
@@ -196,7 +205,7 @@ Indian Institute of Technology Kanpur, Kanpur, Uttar Pradesh, India; July~2009--
 Integrated~M.Sc.~in Physics, February~2015.
 
 % Bhavan's Vidya Mandir, Thrissur, Kerala; June~2007--March~2009.\\
-% Indian Senior School Certificate, May 2009.
+% All India Senior School Certificate, May 2009.
 
 % Hari Sri Vidya Nidhi School, Thrissur, Kerala; May~2005--March~2007.\\
 % Indian Certificate of Seconday Education, May 2007.
@@ -206,9 +215,7 @@ Integrated~M.Sc.~in Physics, February~2015.
 
 \section{Employment History}
 
-Postdoctoral Fellow, School of Chemistry, Tel Aviv University; October 2023--.
-
-Postdoctoral Fellow, School of Physics and Astronomy, Tel Aviv University; October 2023--.
+Postdoctoral Fellow, School of Chemistry and School of Physics and Astronomy, Tel Aviv University; October 2023--
 
 Research Assistant, Department of Physics, Syracuse University; May 2019--August 2023.
 
@@ -225,6 +232,7 @@ Project Associate, Department of Physics, Indian Institute of Technology Kanpur;
 
 \begin{flexlabelled}{hfill}{1.5em}{*}{*}{2.5em}{*}
   \setlength{\itemsep}{-0.25em}
+  \item[2.] {\bname}, Haim Diamant, and David Andelman, ``Anisotropic effects in elastic microphase separation'', forthcoming.
   \item[1.] {\bname}, ``Energy and free-energy landscapes of soft few-body systems with singular constraints'', forthcoming.
 \end{flexlabelled}
 
@@ -237,20 +245,56 @@ Project Associate, Department of Physics, Indian Institute of Technology Kanpur;
 \subsection{Papers}
 
 \begin{enumerate}
-  \item[7.] {\bname}, Haim Diamant, and David Andelman, ``Theory of Phase Separation in Elastomers'', \arxiv{2412.05910}{cond-mat.soft} (2024).
-  \item[6.] {\bname} and Christian D.~Santangelo, ``Geometric localization of waves on thin elastic structures'', \doi{10.1103/PhysRevE.109.035001}{Phys.~Rev.~E \textbf{109}, 035001 (2024)}, \arxiv{2306.07213}{cond-mat.soft}.
-  \item[5.] \bname, J.~M.~Schwarz, and Christian D.~Santangelo, ``Thermal Fluctuations of Singular Bar-Joint Mechanisms'', \doi{10.1103/PhysRevLett.128.208005}{Phys.~Rev.~Lett.~\textbf{128}, 208005 (2022)}, \arxiv{2112.04279}{cond-mat.soft}.
-  \item[4.] \bname, Ambrish Pandey, Mahendra K.~Verma, and Sagar Chakraborty, ``On the applicability of low-dimensional models for convective flow reversals at extreme Prandtl numbers'', \doi{10.1140/epjb/e2017-80391-1}{Eur.~Phys.~J.~B~\textbf{90}, 259~(2017)}, \arxiv{1711.01510}{physics.flu-dyn}.
-  \item[3.] \bname, Himanshu Gupta, and Sagar Chakraborty, ``Revisiting Evidence of Chaos in X-ray Light Curves: The Case of GRS~1915+105'', \doi{10.3847/1538-4357/833/2/208}{Astrophys.~J.~\textbf{833}, 208~(2016)}, \arxiv{1611.02264}{astro-ph.HE}.
-  \item[2.] Aditya Tandon, Malte Schr\"{o}der, \bname, Marc Timme, and Sagar Chakraborty, ``Synchronizing noisy nonidentical oscillators by transient uncoupling'', \doi{10.1063/1.4959141}{Chaos \textbf{26}, 094817~(2016)}, \arxiv{1611.02298}{nlin.CD}.
-  \item[1.] Malte Schr\"{o}der, \bname, Debabrata Dutta, Sagar Chakraborty, and Marc Timme, ``Transient Uncoupling Induces Synchronization'', \doi{10.1103/PhysRevLett.115.054101}{Phys.~Rev.~Lett.~\textbf{115}, 054101~(2015)}, \arxiv{1508.06545}{nlin.CD}.
+  \item[7.]
+    \bname, Haim Diamant, and David Andelman,
+    ``Theory of Microphase Separation in Elastomers'',
+    \doi{10.1103/5q7m-3fpn}{Phys.~Rev.~Lett.~\textbf{135}, 108101 (2025)},
+    \arxiv{2412.05910}{cond-mat.soft}.
+
+  \item[6.]
+    {\bname} and Christian D.~Santangelo,
+    ``Geometric localization of waves on thin elastic structures'',
+    \doi{10.1103/PhysRevE.109.035001}{Phys.~Rev.~E \textbf{109}, 035001 (2024)},
+    \arxiv{2306.07213}{cond-mat.soft}.
+
+  \item[5.]
+    \bname, J.~M.~Schwarz, and Christian D.~Santangelo,
+    ``Thermal Fluctuations of Singular Bar-Joint Mechanisms'',
+    \doi{10.1103/PhysRevLett.128.208005}{Phys.~Rev.~Lett.~\textbf{128}, 208005 (2022)},
+    \arxiv{2112.04279}{cond-mat.soft}.
+
+  \item[4.]
+    \bname, Ambrish Pandey, Mahendra K.~Verma, and Sagar Chakraborty,
+    ``On the applicability of low-dimensional models for convective flow reversals at extreme Prandtl numbers'',
+    \doi{10.1140/epjb/e2017-80391-1}{Eur.~Phys.~J.~B~\textbf{90}, 259~(2017)},
+    \arxiv{1711.01510}{physics.flu-dyn}.
+
+  \item[3.]
+    \bname, Himanshu Gupta, and Sagar Chakraborty,
+    ``Revisiting Evidence of Chaos in X-ray Light Curves: The Case of GRS~1915+105,''
+    \doi{10.3847/1538-4357/833/2/208}{Astrophys.~J.~\textbf{833}, 208~(2016)},
+    \arxiv{1611.02264}{astro-ph.HE}.
+
+  \item[2.]
+    Aditya Tandon, Malte Schr\"{o}der, \bname, Marc Timme, and Sagar Chakraborty,
+    ``Synchronizing noisy nonidentical oscillators by transient uncoupling'',
+    \doi{10.1063/1.4959141}{Chaos \textbf{26}, 094817~(2016)},
+    \arxiv{1611.02298}{nlin.CD}.
+
+  \item[1.]
+    Malte Schr\"{o}der, \bname, Debabrata Dutta, Sagar Chakraborty, and Marc Timme,
+    ``Transient Uncoupling Induces Synchronization'',
+    \doi{10.1103/PhysRevLett.115.054101}{Phys.~Rev.~Lett.~\textbf{115}, 054101~(2015)},
+    \arxiv{1508.06545}{nlin.CD}.
 \end{enumerate}
 
 \subsection{Scientific software}
 
-\begin{enumerate}
-  \item[1.] \href{https://github.com/manu-mannattil/NoLiTSA}{NoLiTSA} is a Python module for nonlinear time series analysis that I developed between 2015 and 2017.  It has now been used in over 15 scientific publications, and has over 100 stars on GitHub.
-\end{enumerate}
+\begin{itemize}
+\item \href{https://github.com/manu-mannattil/github}{NoLiTSA} -- a Python module for nonlinear time series analysis (2017)\\
+  This module implements several standard algorithms in nonlinear time series analysis for computing the correlation dimension and Lyapunov exponent, surrogate analysis, noise reduction, embedding delay/dimension estimation, etc.
+  It has now been used in over 20 scientific publications across various disciplines.
+\end{itemize}
 
 % Awards and Honors {{{1
 % ----------------------
@@ -268,21 +312,43 @@ Kishore Vaigyanik Protsahan Yojana, Department of Science and Technology, Govern
 % Talks {{{1
 % ----------
 
-\section{Talks and Posters}
+\section{Invited Talks}
 
-Geometric Localization of Waves on Thin Elastic Structures: Tel Aviv University, February 2024; The Technion -- Israel Institute of Technology, August 2024.
+\textsl{Theory of Microphase Separation in Elastomers}\\
+  Max Planck Institute for the Physics of Complex Systems, May 2025.\\
+  Bar-Ilan University, January 2025.
 
-A Linear Model for Elastic Phase Separation: BioSoft Day, Tel Aviv University, June 2024.
+\textsl{Geometric Localization of Waves on Thin Elastic Structures}\\
+  Nottingham University, February 2025.\\
+  The Technion -- Israel Institute of Technology, August 2024.\\
+  Tel Aviv University, February 2024.
 
-Asymptotics, Geometry, and Soft Matter: Tel Aviv University, March 2023; Georgia Institute of Technology, March 2023; Universit\'{e} Paris-Saclay, March 2023.
+\textsl{Asymptotics, Geometry, and Soft Matter}\\
+  Tel Aviv University, March 2023.\\
+  Georgia Institute of Technology, March 2023.\\
+  Universit\'{e} Paris-Saclay, March 2023.
 
-Can One Hear the Shape of a Filament?: APS March Meeting '23, Las Vegas.
+\section{Contributed Talks and Posters}
 
-Thermal Fluctuations of Singular Bar-Joint Mechanisms: APS March Meeting '22, Chicago; Simons Center for Geometry and Physics, Stony Brook University, May 2022.
+\textsl{Theory of Microphase Separation in Elastomers}\\
+  StatPhys 29, Florence, July 2025.\\
+  StatPoly, Venice, July 2025.
 
-Thermal Fluctuations of Singular Networks: APS March Meeting '21, Virtual.
+\textsl{A Linear Model for Elastic Phase Separation}\\
+  BioSoft Day, Tel Aviv University, June 2024.
 
-Topics in Nonlinear Time Series Analysis: Indian Institute of Technology Kanpur, August 2015.
+\textsl{Can One Hear the Shape of a Filament?}\\
+  APS March Meeting '23, Las Vegas.
+
+\textsl{Thermal Fluctuations of Singular Bar-Joint Mechanisms}\\
+  Simons Center for Geometry and Physics, Stony Brook University, May 2022.\\
+  APS March Meeting '22, Chicago.
+
+\textsl{Thermal Fluctuations of Singular Networks}\\
+  APS March Meeting '21, Virtual.
+
+% \textsl{Topics in Nonlinear Time Series Analysis}\\
+%   Indian Institute of Technology Kanpur, August 2015.
 
 % Service {{{1
 % ------------
@@ -291,7 +357,7 @@ Topics in Nonlinear Time Series Analysis: Indian Institute of Technology Kanpur,
 
 \section{Service to Profession}
 
-Manuscript reviewer for \emph{Physics of Fluids}.
+Manuscript reviewer for \emph{Journal of Applied Physics} and \emph{Physics of Fluids}.
 
 % Teaching {{{1
 % -------------
@@ -329,56 +395,56 @@ Manuscript reviewer for \emph{Physics of Fluids}.
 % References {{{1
 % ---------------
 
-\section{References}
+% \section{References}
 
-\phantom{}\\[-2em]
+% \phantom{}\\[-2em]
 
-\begin{minipage}[t]{0.28\textwidth}
-  \begin{tabular}{@{}l}
-  Christian D.~Santangelo\\
-  Department of Physics\\
-  Syracuse University\\
-  \email{cdsantan@syr.edu}
-  \end{tabular}
-\end{minipage}
-%
-\begin{minipage}[t]{0.28\textwidth}
-  \begin{tabular}{@{}l}
-  David Andelman\\
-  School of Physics\\
-  Tel Aviv University\\
-  \email{andelman@post.tau.ac.il}
-  \end{tabular}
-\end{minipage}
-%
-\begin{minipage}[t]{0.28\textwidth}
-  \begin{tabular}{@{}l}
-  Haim Diamant\\
-  School of Chemistry\\
-  Tel Aviv University\\
-  \email{hdiamant@tauex.tau.ac.il}
-  \end{tabular}
-\end{minipage}
+% \begin{minipage}[t]{0.28\textwidth}
+%   \begin{tabular}{@{}l}
+%   Christian D.~Santangelo\\
+%   Department of Physics\\
+%   Syracuse University\\
+%   \email{cdsantan@syr.edu}
+%   \end{tabular}
+% \end{minipage}
+% %
+% \begin{minipage}[t]{0.28\textwidth}
+%   \begin{tabular}{@{}l}
+%   David Andelman\\
+%   School of Physics\\
+%   Tel Aviv University\\
+%   \email{andelman@post.tau.ac.il}
+%   \end{tabular}
+% \end{minipage}
+% %
+% \begin{minipage}[t]{0.28\textwidth}
+%   \begin{tabular}{@{}l}
+%   Haim Diamant\\
+%   School of Chemistry\\
+%   Tel Aviv University\\
+%   \email{hdiamant@tauex.tau.ac.il}
+%   \end{tabular}
+% \end{minipage}
 
-%\phantom{}\\[-0.5em]
+% \phantom{}\\[-0.5em]
 
-%\begin{minipage}[t]{0.28\textwidth}
-%  \begin{tabular}{@{}l}
-%  Jennifer M.~Schwarz\\
-%  Department of Physics\\
-%  Syracuse University\\
-%  \email{jmschwa02@syr.edu}
-%  \end{tabular}
-%\end{minipage}
-%%
-%\begin{minipage}[t]{0.28\textwidth}
-%  \begin{tabular}{@{}l}
-%  Sagar Chakraborty\\
-%  Department of Physics\\
-%  Indian Insitute of Technology Kanpur\\
-%  \email{sagarc@iitk.ac.in}
-%  \end{tabular}
-%\end{minipage}
+% \begin{minipage}[t]{0.28\textwidth}
+%   \begin{tabular}{@{}l}
+%   Jennifer M.~Schwarz\\
+%   Department of Physics\\
+%   Syracuse University\\
+%   \email{jmschwa02@syr.edu}
+%   \end{tabular}
+% \end{minipage}
+% %
+% \begin{minipage}[t]{0.28\textwidth}
+%   \begin{tabular}{@{}l}
+%   Sagar Chakraborty\\
+%   Department of Physics\\
+%   Indian Insitute of Technology Kanpur\\
+%   \email{sagarc@iitk.ac.in}
+%   \end{tabular}
+% \end{minipage}
 
 % Revision Information {{{1
 % -------------------------
