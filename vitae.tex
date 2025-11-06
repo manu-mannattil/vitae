@@ -24,23 +24,23 @@
 
 \documentclass[10pt,article,oneside]{memoir}
 
-\def\fname{Manu Mannattil}                % Set your full name here.
-\def\bname{\underline{Manu Mannattil}}    % Set your name as you'd like it to appear in bibliographies.
-
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
+
+\def\fname{Manu Mannattil}                % Set your full name here.
+\def\bname{\underline{Manu Mannattil}}    % Set your name as you'd like it to appear in bibliographies.
 
 \setlrmarginsandblock{1.25in}{1.25in}{*}
 \setulmarginsandblock{1.25in}{1.25in}{*}
 \checkandfixthelayout
 
 \usepackage{color}
-\definecolor{bs1}{rgb}{0.207843,0.415686,0.623529}
+\definecolor{bluesmoke}{rgb}{0.207843,0.415686,0.623529}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 
 \usepackage[
-  allcolors=bs1,
+  allcolors=bluesmoke,
   colorlinks=true,
   pdftex,
   pdfauthor={\fname},
@@ -54,10 +54,6 @@
 \def\email#1{\href{mailto:#1}{#1}}
 \def\doi#1#2{\href{https://doi.org/#1}{#2}}
 \def\arxiv#1#2{\href{https://arxiv.org/abs/#1}{arXiv:#1 [#2]}}
-
-%\usepackage{mlmodern}
-%\usepackage{times}
-%\def\bfdefault{b}
 
 \usepackage[osf]{mathpazo}
 % OSF makes \textsl use ordinary italics.
@@ -114,6 +110,7 @@
   \def\gitCommitterEmail{\gitError}
   \def\gitCommitterDate{\gitError}
   \def\gitCommitterAltDate{\gitError}
+  \def\gitCommitterDateHuman{\gitError}
 }
 
 \def\headerstyle#1{%
@@ -130,10 +127,10 @@
 \makeatother
 
 % Header and footer.
-% \makeoddhead{headings}{}{\headerstyle{\small Curriculum {Vit\ae} --- \fname}}{}
-% \makeoddfoot{plain}{}{\headerstyle{\thepage}}{} % first page
-% \makeoddfoot{headings}{}{\headerstyle{\thepage}}{} % other pages
-% \pagestyle{headings}
+\makeoddhead{headings}{}{\headerstyle{\small Curriculum {Vit\ae}: \fname}}{}
+\makeoddfoot{plain}{}{\headerstyle{\thepage}}{} % first page
+\makeoddfoot{headings}{}{\headerstyle{\thepage}}{} % other pages
+\pagestyle{headings}
 
 \usepackage{graphicx}
 
@@ -145,33 +142,16 @@
 \thispagestyle{plain}
 \nohangpars
 
-{\large\headerstyle{CURRICULUM VIT\AE}}
+{\color{gray}\large\headerstyle{CURRICULUM VIT\AE} \hfill \normalsize\gitCommitterDateHuman}
 \vskip2em
 
 \section{\fname}
 
-School of Chemistry and School of Physics and Astronomy,\\
-Tel Aviv University, Ramat Aviv, Tel Aviv 69978, Israel.\\
+School of Engineering and Applied Sciences,\\
+Harvard University, Cambridge, Massachusetts 02138, USA.\\
 
-Phone: (+972)~55-304-0112\\
+Phone: (+1)~857-287-1865\\
 Email: \email{manu.mannattil@posteo.net}
-
-%\begin{minipage}[t]{0.5\textwidth}
-%  \begin{tabular}{@{}l}
-%  School of Chemistry and School of Physics and Astronomy,\\
-%  Tel Aviv University, Ramat Aviv,\\
-%  Tel Aviv 69978, Israel
-%  \end{tabular}
-%\end{minipage}
-%%
-%\begin{minipage}[b]{0.5\textwidth}
-%  \setlength{\tabcolsep}{2pt}
-%  \begin{tabular}{@{}rl@{}}
-%    Phone: & (+972)~55-304-0112\\
-%    Email: & \email{manu.mannattil@posteo.net}\\
-%    \phantom{}
-%  \end{tabular}
-%\end{minipage}
 
 % Research Interests {{{1
 % -----------------------
@@ -179,7 +159,7 @@ Email: \email{manu.mannattil@posteo.net}
 \section{Research Interests}
 
 Broad interests in theoretical soft matter physics, statistical mechanics, and applied mathematics.
-Recent studies address problems in phase separation, elasticity theory, wave mechanics, WKB theory, geometric aspects of soft matter, free-energy landscapes, and nonlinear dynamics.
+Recent studies address problems in phase separation, elasticity theory, wave mechanics, WKB theory, the geometry of soft materials, free-energy landscapes, and nonlinear dynamics.
 
 \hangpars
 
@@ -215,7 +195,11 @@ Integrated~M.Sc.~in Physics, February~2015.
 
 \section{Employment History}
 
-Postdoctoral Fellow, School of Chemistry and School of Physics and Astronomy, Tel Aviv University; October 2023--
+Postdoctoral Fellow in Applied Mathematics, School of Engineering and Applied Sciences,\\
+Harvard University; November 2025--.
+
+Postdoctoral Fellow, School of Chemistry and School of Physics and Astronomy,\\
+Tel Aviv University; October 2023--September 2025.
 
 Research Assistant, Department of Physics, Syracuse University; May 2019--August 2023.
 
@@ -357,7 +341,9 @@ Kishore Vaigyanik Protsahan Yojana, Department of Science and Technology, Govern
 
 \section{Service to Profession}
 
-Manuscript reviewer for \emph{Journal of Applied Physics} and \emph{Physics of Fluids}.
+Manuscript reviewer for
+\emph{Journal of Applied Physics} and
+\emph{Physics of Fluids}.
 
 % Teaching {{{1
 % -------------
@@ -366,20 +352,20 @@ Manuscript reviewer for \emph{Journal of Applied Physics} and \emph{Physics of F
 
 \subsection{Syracuse University}
 
-%Instructor for PHY 212 (Electricity \& Magnetism); Grader for PHY 731 (Graduate Statistical Mechanics); Teaching Assistant for PHY 215 (Honors Mechanics), PHY 211 (General Mechanics), PHY 222 (Electricity \& Magnetism Lab), and AST 101 (Introductory Astronomy).
+% Here, it's better to use \hfill instead of tabular to get properly left-right alignment.
 
-\begin{tabular}{@{}lr}
-  Grader, PHY 741: Graduate Statistical Mechanics                                              & \emph{Spring 2022} \\
-  Teaching Assistant, PHY 212: General Physics II (Electricity \& Magnetism)                   & \emph{Spring 2020} \\
-  Teaching Assistant, AST 101: Our Corner of the Universe                                      & \emph{Fall 2019}   \\
-  Course Instructor, PHY 212: General Physics II (Electricity \& Magnetism)                    & \emph{Summer 2019} \\
-  Teaching Assistant, PHY 222: General Physics II Lab (Electricity \& Magnetism)               & \emph{Spring 2019} \\
-  Teaching Assistant, PHY 211: General Physics I (Mechanics)                                   & \emph{Fall 2018}   \\
-  Teaching Assistant, PHY 215: General Physics I for Majors (Mechanics)                        & \emph{Fall 2018}   \\
-  Teaching Assistant, AST 101: Our Corner in the Universe                                      & \emph{Summer 2018} \\
-  Teaching Assistant, PHY 212: General Physics II (Electricity \& Magnetism)                   & \emph{Spring 2018} \\
-  Teaching Assistant, AST 101: Our Corner in the Universe                                      & \emph{Fall 2017}
-\end{tabular}
+Grader, PHY 741: Graduate Statistical Mechanics                                              \hfill \emph{Spring 2022} \\
+Teaching Assistant, PHY 212: General Physics II (Electricity \& Magnetism)                   \hfill \emph{Spring 2020} \\
+Teaching Assistant, AST 101: Our Corner of the Universe                                      \hfill \emph{Fall 2019}   \\
+Course Instructor, PHY 212: General Physics II (Electricity \& Magnetism)                    \hfill \emph{Summer 2019} \\
+Teaching Assistant, PHY 222: General Physics II Lab (Electricity \& Magnetism)               \hfill \emph{Spring 2019} \\
+Teaching Assistant, PHY 211: General Physics I (Mechanics)                                   \hfill \emph{Fall 2018}   \\
+Teaching Assistant, PHY 215: General Physics I for Majors (Mechanics)                        \hfill \emph{Fall 2018}   \\
+Teaching Assistant, AST 101: Our Corner in the Universe                                      \hfill \emph{Summer 2018} \\
+Teaching Assistant, PHY 212: General Physics II (Electricity \& Magnetism)                   \hfill \emph{Spring 2018} \\
+Teaching Assistant, AST 101: Our Corner in the Universe                                      \hfill \emph{Fall 2017}
+
+% Instructor for PHY 212 (Electricity \& Magnetism); Grader for PHY 731 (Graduate Statistical Mechanics); Teaching Assistant for PHY 215 (Honors Mechanics), PHY 211 (General Mechanics), PHY 222 (Electricity \& Magnetism Lab), and AST 101 (Introductory Astronomy).
 
 % Miscellaneous {{{1
 % ------------------
@@ -452,8 +438,9 @@ Manuscript reviewer for \emph{Journal of Applied Physics} and \emph{Physics of F
 \bigskip
 
 \begin{center}
+  \small
   \color{gray}
-  Git commit \href{https://github.com/manu-mannattil/vitae/tree/\gitHash}{\texttt{\gitShortHash}}; \gitCommitterDate
+  Git commit \href{https://github.com/manu-mannattil/vitae/tree/\gitHash}{\texttt{\gitShortHash}}; \gitCommitterDate.
 \end{center}
 
 \end{document}

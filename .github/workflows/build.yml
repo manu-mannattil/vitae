@@ -24,9 +24,6 @@ jobs:
 
       - name: Generate PDFs
         run: |
-          git clone --depth=1 https://github.com/manu-mannattil/texmf
-          export TEXMFHOME=./texmf
-
           # For some reason, Git doesn't treat the checked
           # out directory as a Git repo unless we do this.
           # https://github.com/actions/checkout/issues/363#issuecomment-1163942488
@@ -50,6 +47,9 @@ jobs:
           git config --global user.name ${{ github.actor }}
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git switch "$GIT_BRANCH" || git switch --orphan "$GIT_BRANCH"
+
+          # GitHub requires you to use a token for push access.
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
           # Move .git to the build dir and recommit.
           mv .git ./build
