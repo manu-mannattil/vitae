@@ -13,5 +13,3 @@ generated PDF.
 Usage, modification, and distribution of this document, for any purpose,
 with or without attribution, is permitted provided the author's
 personal/professional details are removed.
-
-[1]: https://www.ctan.org/pkg/gitinfo2
