@@ -1,35 +1,41 @@
 name: build
 
-# Run the workflow only when pushing to the main branch.
+# Run the workflow only when pushing to the master branch.
 on:
   push:
     branches:
       - master
 
+# Required because the workflow pushes the generated PDF
+# back to the repository's build branch.
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Rather than install texlive-full using apt, which is
-    # bound to take a zillion years, make use of a public
-    # TeX Live Docker image.
-    container:
-      image: ghcr.io/xu-cheng/texlive-full:latest
-    steps:
-      - name: Install git
-        run: |
-          apk add git
 
+    steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
+
+      # Install a minimal TeX Live distribution.  The installation
+      # is automatically cached by zauguin/install-texlive.
+      #
+      # Add any additional TeX Live packages required by vitae.tex
+      # to this list.
+      - name: Install TeX Live
+        uses: zauguin/install-texlive@v4
+        with:
+          texlive_version: 2026
+          packages: |
+            scheme-basic
+            collection-latexrecommended
+            microtype
+            mathpazo
 
       - name: Generate PDFs
         run: |
-          # For some reason, Git doesn't treat the checked
-          # out directory as a Git repo unless we do this.
-          # https://github.com/actions/checkout/issues/363#issuecomment-1163942488
-          # https://github.com/actions/runner/issues/2033
-          git config --global --add safe.directory $(realpath .)
-
           make
           mkdir build
           mv -f vitae.pdf build
@@ -39,12 +45,12 @@ jobs:
       # directory.  This is an NIH hack to avoid the use of
       # existing actions like s0/git-publish-subdir-action,
       # which is a 500+ SLOC mess written in node.js.
-      - name: push build to separate branch
+      - name: Push build to separate branch
         env:
           GIT_BRANCH: "build"
           GIT_MESSAGE: ""
         run: |
-          git config --global user.name ${{ github.actor }}
+          git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git switch "$GIT_BRANCH" || git switch --orphan "$GIT_BRANCH"
 
